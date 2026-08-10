@@ -7,7 +7,7 @@ const MAX_SIZE = 10 * 1024 * 1024;
 
 export class LocalStorageProvider implements StorageProvider {
   async upload(file: File): Promise<StoredAsset> {
-    if (file.size > MAX_SIZE) throw new Error("File exceeds the 10 MB limit.");
+    if (file.size > MAX_SIZE) throw new Error("El archivo supera el límite de 10 MB.");
     const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
     const storedName = `${randomUUID()}-${safeName}`;
     const directory = path.join(process.cwd(), "uploads");

@@ -6,5 +6,5 @@ export const dynamic = "force-dynamic";
 
 export default async function SetupPage() {
   if (await db.user.count()) redirect("/login");
-  return <main className="auth-page"><section className="auth-art"><span className="eyebrow">Secure first run</span><h1>Your workspace.<br/>Your credentials.</h1><p style={{color:"#b7c5bb",maxWidth:480}}>Create the only administrator without storing a password in Git, deployment logs or environment configuration.</p></section><section className="auth-form"><SetupForm/></section></main>;
+  return <main className="auth-page"><section className="auth-art"><span className="eyebrow">Primer inicio seguro</span><h1>Tu espacio.<br/>Tus credenciales.</h1><p style={{color:"#b7c5bb",maxWidth:480}}>Crea el administrador sin guardar contraseñas en Git, logs de despliegue ni variables de configuración.</p></section><section className="auth-form"><SetupForm/></section></main>;
 }

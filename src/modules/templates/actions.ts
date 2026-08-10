@@ -11,7 +11,7 @@ export async function createTemplateAction(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
   const structureText = String(formData.get("structure") ?? "");
-  if (!name) throw new Error("Template name is required.");
+  if (!name) throw new Error("El nombre de la plantilla es obligatorio.");
   const headings = structureText.split("\n").map((line) => line.trim()).filter(Boolean);
   const structure = (headings.length ? headings : [""]).map((text, index) => ({ type: index === 0 ? "heading" : "paragraph", content: { text } })) as Prisma.InputJsonValue;
   await db.template.create({ data: {

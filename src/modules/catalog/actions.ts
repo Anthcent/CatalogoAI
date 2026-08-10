@@ -14,12 +14,12 @@ async function uniqueCode() {
     const code = generatePublicCode();
     if (!(await db.catalogItem.findUnique({ where: { publicCode: code } }))) return code;
   }
-  throw new Error("Could not generate a unique public code.");
+  throw new Error("No se pudo generar un código público único.");
 }
 
 export async function createItemAction(formData: FormData) {
   const user = await requireUser();
-  const title = String(formData.get("title") ?? "Untitled").trim() || "Untitled";
+  const title = String(formData.get("title") ?? "Sin título").trim() || "Sin título";
   const templateId = String(formData.get("templateId") ?? "");
   const businessId = String(formData.get("businessId") ?? "");
   const template = templateId ? await db.template.findUnique({ where: { id: templateId } }) : null;
@@ -40,7 +40,7 @@ export async function quickCaptureAction(formData: FormData) {
   const content = String(formData.get("content") ?? "").trim();
   if (!content) return;
   await db.catalogItem.create({ data: {
-    publicCode: await uniqueCode(), title: String(formData.get("title") ?? "").trim() || "Quick capture",
+    publicCode: await uniqueCode(), title: String(formData.get("title") ?? "").trim() || "Captura rápida",
     description: content.slice(0, 240), createdById: user.id, inInbox: true,
     blocks: { create: { type: content.startsWith("http") ? "link" : "paragraph", position: 0, content: { text: content, url: content.startsWith("http") ? content : undefined } } },
   } });
@@ -50,13 +50,13 @@ export async function quickCaptureAction(formData: FormData) {
 export async function saveItemAction(input: { id: string; title: string; description: string; blocks: BlockDraft[] }) {
   await requireUser();
   const existing = await db.catalogItem.findUnique({ where: { id: input.id }, include: { blocks: true, versions: { orderBy: { version: "desc" }, take: 1 } } });
-  if (!existing) throw new Error("Item not found.");
+  if (!existing) throw new Error("No se encontró el elemento.");
   const snapshot = { title: existing.title, description: existing.description, blocks: existing.blocks };
   await db.$transaction([
-    db.itemVersion.create({ data: { itemId: input.id, version: (existing.versions[0]?.version ?? 0) + 1, summary: "Canvas update", snapshot } }),
+    db.itemVersion.create({ data: { itemId: input.id, version: (existing.versions[0]?.version ?? 0) + 1, summary: "Actualización del lienzo", snapshot } }),
     db.block.deleteMany({ where: { itemId: input.id } }),
     db.catalogItem.update({ where: { id: input.id }, data: {
-      title: input.title.trim() || "Untitled", description: input.description,
+      title: input.title.trim() || "Sin título", description: input.description,
       blocks: { create: input.blocks.map((b, position) => ({ type: b.type, position, content: b.content as Prisma.InputJsonValue })) },
     } }),
   ]);
@@ -82,8 +82,8 @@ export async function createRelationAction(formData: FormData) {
   await requireUser();
   const sourceItemId = String(formData.get("sourceItemId") ?? "");
   const targetItemId = String(formData.get("targetItemId") ?? "");
-  const relationType = String(formData.get("relationType") ?? "related to");
-  if (!sourceItemId || !targetItemId || sourceItemId === targetItemId) throw new Error("Choose a different target item.");
+  const relationType = String(formData.get("relationType") ?? "relacionado con");
+  if (!sourceItemId || !targetItemId || sourceItemId === targetItemId) throw new Error("Elige un elemento de destino diferente.");
   await db.itemRelation.upsert({
     where: { sourceItemId_targetItemId_relationType: { sourceItemId, targetItemId, relationType } },
     update: {}, create: { sourceItemId, targetItemId, relationType },
@@ -107,7 +107,7 @@ export async function restoreVersionAction(formData: FormData) {
     db.catalogItem.findUnique({ where: { id: itemId }, include: { blocks: { orderBy: { position: "asc" } }, versions: { orderBy: { version: "desc" }, take: 1 } } }),
     db.itemVersion.findFirst({ where: { id: versionId, itemId } }),
   ]);
-  if (!item || !historical) throw new Error("Version not found.");
+  if (!item || !historical) throw new Error("No se encontró la versión.");
   const snapshot = historical.snapshot as { title: string; description: string; blocks: { type: string; content: Prisma.JsonValue }[] };
   const currentSnapshot = { title: item.title, description: item.description, blocks: item.blocks } as Prisma.InputJsonValue;
   await db.$transaction([

@@ -5,7 +5,7 @@ export type BlockDraft = {
 };
 
 export const blockTypes = [
-  ["paragraph", "Text"], ["heading", "Heading"], ["checklist", "Checklist"],
-  ["prompt", "AI Prompt"], ["steps", "Procedure"], ["callout", "Callout"],
-  ["code", "Code"], ["link", "Link"], ["image", "Image"], ["table", "Table"],
+  ["paragraph", "Texto"], ["heading", "Título"], ["checklist", "Lista de tareas"],
+  ["prompt", "Prompt de IA"], ["steps", "Procedimiento"], ["callout", "Destacado"],
+  ["code", "Código"], ["link", "Enlace"], ["image", "Imagen"], ["table", "Tabla"],
 ] as const;

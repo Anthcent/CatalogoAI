@@ -24,7 +24,7 @@ export async function searchItems(query: string, userId: string) {
     if (item.title.toLowerCase().includes(q.toLowerCase())) score += 30;
     score += tokens.filter((token) => haystack.includes(token)).length * 8;
     if (item.favorite) score += 3;
-    return { ...item, score, reason: item.publicCode === q.toUpperCase() ? "Exact public code" : semanticMatch && semanticMatch.similarity > 0.6 ? "Semantically related content" : score >= 30 ? "Title match" : "Related content and tags" };
+    return { ...item, score, reason: item.publicCode === q.toUpperCase() ? "Código público exacto" : semanticMatch && semanticMatch.similarity > 0.6 ? "Contenido relacionado semánticamente" : score >= 30 ? "Coincidencia en el título" : "Contenido y etiquetas relacionadas" };
   }).sort((a, b) => b.score - a.score);
   await db.searchHistory.create({ data: { userId, query: q, results: ranked.length } });
   return ranked;

@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 export type AiOrganization = { title: string; description: string; category: string; type: string; tags: string[] };
 
 function client() {
-  if (!process.env.GEMINI_API_KEY) throw new Error("Gemini is not configured.");
+  if (!process.env.GEMINI_API_KEY) throw new Error("Gemini no está configurado.");
   return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 }
 
