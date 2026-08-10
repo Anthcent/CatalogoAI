@@ -10,6 +10,7 @@ COPY --from=dependencies /app/expert_hub_v2/node_modules ./expert_hub_v2/node_mo
 COPY expert_hub_v2 ./expert_hub_v2
 COPY expert_catalog_mockup/assets/graphics ./expert_catalog_mockup/assets/graphics
 WORKDIR /app/expert_hub_v2
+RUN npm run db:generate
 RUN npm run build
 
 FROM node:24.6.0-bookworm-slim AS runner
@@ -20,7 +21,9 @@ ENV NODE_ENV=production \
     PORT=8080
 RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/* \
     && groupadd --system --gid 1001 experthub \
-    && useradd --system --uid 1001 --gid experthub experthub
+    && useradd --system --uid 1001 --gid experthub experthub \
+    && mkdir -p /app/expert_hub_v2/uploads \
+    && chown -R experthub:experthub /app/expert_hub_v2/uploads
 COPY --from=builder --chown=experthub:experthub /app/expert_hub_v2/.next/standalone /app
 COPY --from=builder --chown=experthub:experthub /app/expert_hub_v2/.next/static ./.next/static
 COPY --from=builder --chown=experthub:experthub /app/expert_catalog_mockup /app/expert_catalog_mockup

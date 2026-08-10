@@ -1,0 +1,1 @@
+.mode-switch label{border:0;background:transparent;border-radius:6px;padding:7px 10px;font-size:9px;color:var(--muted);cursor:pointer}.mode-switch label.active{background:#fff;color:var(--primary);box-shadow:0 1px 4px #0000000d;font-weight:700}.mode-switch label input{position:absolute;opacity:0;pointer-events:none}.search-layout:has(.results){grid-template-columns:minmax(0,1fr)}

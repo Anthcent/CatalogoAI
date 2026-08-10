@@ -4,6 +4,8 @@ node_modules
 uploads/*
 !uploads/.gitkeep
 src/generated
+**/src/generated
+expert_hub_v2/uploads/*
 coverage
 *.log
 *.tsbuildinfo

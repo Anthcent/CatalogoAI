@@ -1,2 +1,11 @@
 import { ExpertHubShell } from "@/features/shell/expert-hub-shell";
-export default function WorkspaceLayout({children}:{children:React.ReactNode}){return <ExpertHubShell>{children}</ExpertHubShell>}
+import { requireUser } from "@/features/auth/session";
+
+export default async function WorkspaceLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  await requireUser();
+  return <ExpertHubShell>{children}</ExpertHubShell>;
+}
