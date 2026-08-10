@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Mockup navegable de Expert Hub">
+  <title>Expert Hub — Mockup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo"><i></i><i></i><i></i></div>
+      <div><b>Expert Hub</b><small>Knowledge workspace</small></div>
+    </div>
+
+    <button class="btn-new" data-modal="newModal"><span>＋</span>Nuevo <kbd>⌘N</kbd></button>
+
+    <nav class="nav">
+      <button class="nav-link active" data-view="home"><span>⌂</span>Inicio</button>
+      <button class="nav-link" data-view="search"><span>⌕</span>Buscar <kbd>⌘K</kbd></button>
+      <button class="nav-link" data-view="catalog"><span>▦</span>Catálogo <em>128</em></button>
+      <button class="nav-link" data-view="templates"><span>◇</span>Plantillas</button>
+      <button class="nav-link" data-view="assets"><span>▧</span>Biblioteca visual <em>40</em></button>
+      <button class="nav-link" data-view="inbox"><span>⇣</span>Bandeja <i class="warn-dot"></i></button>
+    </nav>
+
+    <div class="side-group">
+      <p>EMPRESAS</p>
+      <button data-business="Expert Academy"><i class="dot academy"></i>Expert Academy <span>42</span></button>
+      <button data-business="Expert Design"><i class="dot design"></i>Expert Design <span>51</span></button>
+      <button data-business="Expert Code"><i class="dot code"></i>Expert Code <span>35</span></button>
+    </div>
+
+    <div class="side-spacer"></div>
+    <div class="storage">
+      <div class="storage-head"><span>Almacenamiento</span><b>38%</b></div>
+      <div class="bar"><i></i></div>
+      <small>7.6 GB de 20 GB</small>
+    </div>
+    <button class="nav-link settings-link" data-view="settings"><span>⚙</span>Configuración</button>
+    <div class="profile">
+      <div class="avatar">E</div>
+      <div><b>Administrador</b><small>Sesión privada</small></div>
+      <button>•••</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+        <div class="crumb" id="crumb"><span>Expert Hub</span><b>/</b><strong>Inicio</strong></div>
+      </div>
+      <div class="top-actions">
+        <button class="global-search" id="globalSearch"><span>⌕</span><i>Buscar en todo...</i><kbd>⌘K</kbd></button>
+        <button class="gemini-chip" data-view="settings" data-settings="ai">✦ Gemini activo</button>
+        <button class="icon-btn" id="notify">♢<i></i></button>
+      </div>
+    </header>
+
+    <div class="views">
+      <!-- HOME -->
+      <section class="view active" id="view-home" data-title="Inicio">
+        <div class="page">
+          <div class="welcome">
+            <div>
+              <p class="eyebrow">DOMINGO · 9 AGOSTO</p>
+              <h1>Buenas noches. <span>¿Qué quieres crear hoy?</span></h1>
+              <p class="subtitle">Encuentra, reutiliza o documenta cualquier conocimiento de tus negocios desde un solo lugar.</p>
+            </div>
+            <button class="btn-soft">◉ Modo enfoque</button>
+          </div>
+
+          <div class="hero-search">
+            <div class="hero-input">
+              <span>⌕</span>
+              <input id="homeQuery" placeholder="Ej: Quiero hacer stickers para cuadernos usando IA...">
+              <button class="voice">⌁</button>
+              <button class="btn-dark" id="homeSearchBtn">Buscar →</button>
+            </div>
+            <div class="search-examples">
+              <b>✦ Busca por intención</b>
+              <button data-query="planificación de una clase de programación">Planificación de clase</button>
+              <button data-query="proceso para crear stickers infantiles">Crear stickers</button>
+              <button data-query="repositorios reutilizables de autenticación">Repositorios GitHub</button>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <button class="quick primary" data-modal="newModal"><span>＋</span><div><b>Nuevo elemento</b><small>Empieza desde cero o plantilla</small></div><i>→</i></button>
+            <button class="quick" data-modal="captureModal"><span>⚡</span><div><b>Captura rápida</b><small>Guarda ahora, organiza después</small></div><i>→</i></button>
+            <button class="quick" data-view="templates"><span>◇</span><div><b>Abrir plantilla</b><small>Usa una estructura preparada</small></div><i>→</i></button>
+            <button class="quick" data-view="catalog"><span>↺</span><div><b>Ver recientes</b><small>Continúa donde lo dejaste</small></div><i>→</i></button>
+          </div>
+
+          <div class="section-head">
+            <div><h2>Continuar trabajando</h2><p>Tus elementos más recientes y pendientes.</p></div>
+            <button data-view="catalog">Ver todo →</button>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card" data-item="EXP-D7K4MX">
+              <div class="card-visual sticker">
+                <img class="asset-art" src="assets/graphics/stickers-space.svg" alt="Colección de stickers espaciales">
+                <span class="badge status-process">En proceso</span>
+                <div class="sticker-sheet"><i>★</i><i>☺</i><i>✿</i><i>⚡</i><i>♡</i><i>☁</i></div>
+              </div>
+              <div class="work-body">
+                <div class="meta"><span class="code">EXP-D7K4MX</span><span class="company design">Expert Design</span></div>
+                <h3>Stickers escolares — colección espacial</h3>
+                <p>Proceso completo de concepto, generación con IA, preparación e impresión.</p>
+                <footer><span>Actualizado hace 18 min</span><span>7 bloques · 4 archivos</span></footer>
+              </div>
+            </article>
+
+            <article class="work-card" data-item="EXP-A4M8QW">
+              <div class="card-visual lesson">
+                <img class="asset-art" src="assets/graphics/academy-python.svg" alt="Planificación de clase de Python">
+                <span class="badge">Borrador</span>
+                <div class="lesson-paper"><b>Python</b><i>Variables</i><i>Condicionales</i><i>Práctica</i></div>
+              </div>
+              <div class="work-body">
+                <div class="meta"><span class="code">EXP-A4M8QW</span><span class="company academy">Expert Academy</span></div>
+                <h3>Clase 08 — Introducción a Python</h3>
+                <p>Planificación de 90 minutos con ejercicios, recursos y checklist.</p>
+                <footer><span>Ayer · 9:42 PM</span><span>12 bloques · 2 archivos</span></footer>
+              </div>
+            </article>
+
+            <article class="work-card" data-item="EXP-C9N2TX">
+              <div class="card-visual code-visual">
+                <img class="asset-art" src="assets/graphics/code-nextjs.svg" alt="Starter de autenticación Next.js">
+                <span class="badge status-ready">Probado</span>
+                <div class="code-box"><i></i><i></i><i></i><pre>auth / nextjs
+prisma adapter
+role guard()</pre></div>
+              </div>
+              <div class="work-body">
+                <div class="meta"><span class="code">EXP-C9N2TX</span><span class="company code-company">Expert Code</span></div>
+                <h3>Starter de autenticación Next.js</h3>
+                <p>Repositorio base con login, Prisma, sesiones y protección de rutas.</p>
+                <footer><span>3 ago · 4:10 PM</span><span>5 relaciones</span></footer>
+              </div>
+            </article>
+          </div>
+
+          <div class="home-bottom">
+            <section class="panel">
+              <div class="panel-head"><div><h3>Sugerencias para ti</h3><p>Basadas en relaciones y uso reciente.</p></div><span class="ai-badge">✦ IA</span></div>
+              <div class="suggestions">
+                <button data-item="EXP-P3L7SV"><span class="sicon purple">P</span><div><b>Megaprompt — ilustración infantil</b><small>Relacionado con “Stickers escolares” · 92% relevancia</small></div><i>→</i></button>
+                <button><span class="sicon green">↗</span><div><b>Guía de preparación para impresión</b><small>Usado junto a 6 productos de Expert Design</small></div><i>→</i></button>
+                <button><span class="sicon orange">D</span><div><b>Checklist de control de calidad</b><small>Podría complementar tu proceso actual</small></div><i>→</i></button>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-head"><div><h3>Actividad reciente</h3><p>Lo último que cambió.</p></div><button>•••</button></div>
+              <div class="timeline">
+                <div><i class="dot design"></i><p><b>Editaste</b> Stickers escolares — colección espacial<small>Hace 18 min</small></p></div>
+                <div><i class="dot code"></i><p><b>Relacionaste</b> 2 elementos de Expert Code<small>Hace 2 h</small></p></div>
+                <div><i class="dot academy"></i><p><b>Gemini resumió</b> Clase 08 — Introducción a Python<small>Ayer</small></p></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH -->
+      <section class="view" id="view-search" data-title="Buscar">
+        <div class="page">
+          <div class="page-title">
+            <div><p class="eyebrow">BÚSQUEDA INTELIGENTE</p><h1>Encuentra lo que necesitas, <span>aunque no recuerdes cómo lo llamaste.</span></h1></div>
+            <button class="btn-soft">↺ Historial</button>
+          </div>
+
+          <div class="semantic-box">
+            <div class="semantic-main">
+              <span class="spark-box">✦</span>
+              <textarea id="semanticQuery">Quiero crear stickers para cuadernos usando IA y luego prepararlos para imprimir</textarea>
+              <button class="btn-dark" id="semanticBtn">Buscar →</button>
+            </div>
+            <div class="semantic-footer">
+              <button class="mode active">✦ Intención</button>
+              <button class="mode">Aa Texto</button>
+              <button class="mode"># Código</button>
+              <span></span>
+              <button class="filter-btn">⚙ Filtros <b>2</b></button>
+            </div>
+          </div>
+
+          <div class="results-head">
+            <div><b>6 resultados</b><span> · ordenados por relevancia</span></div>
+            <div class="filter-tags"><span>Expert Design ×</span><span>Con prompts ×</span><button>Limpiar</button></div>
+          </div>
+
+          <div class="search-layout">
+            <div class="results">
+              <article class="result best" data-item="EXP-D7K4MX">
+                <div class="result-thumb sticker"><img class="asset-art" src="assets/graphics/stickers-space.svg" alt="Stickers escolares"><div class="sticker-sheet small"><i>★</i><i>☺</i><i>✿</i><i>⚡</i></div></div>
+                <div class="result-body">
+                  <div class="result-meta"><b>✦ Mejor coincidencia · 96%</b><span class="code">EXP-D7K4MX</span></div>
+                  <h3>Stickers escolares — colección espacial</h3>
+                  <div class="meta"><span class="company design">Expert Design</span><span class="tag">Producto</span><span class="tag">Stickers</span><span class="tag">IA</span></div>
+                  <p>Proceso completo para diseñar stickers escolares: concepto, megaprompt, generación visual, selección, ajuste de tamaño y preparación para impresión.</p>
+                  <div class="match"><span>✦</span><p><b>¿Por qué coincide?</b> Contiene un flujo de creación de stickers con IA, prompts reutilizables y pasos específicos de preparación para impresión.</p></div>
+                </div>
+                <button class="open-link">Abrir →</button>
+              </article>
+
+              <article class="result" data-item="EXP-P3L7SV">
+                <div class="result-thumb prompt-thumb"><img class="asset-art" src="assets/graphics/cover-purple.svg" alt="Prompt visual"><b>PROMPT</b><span>{ personaje }</span><span>{ estilo }</span><span>{ formato }</span></div>
+                <div class="result-body">
+                  <div class="result-meta"><b>89% relevancia</b><span class="code">EXP-P3L7SV</span></div>
+                  <h3>Megaprompt — ilustración infantil para productos</h3>
+                  <div class="meta"><span class="company design">Expert Design</span><span class="tag">Prompt</span><span class="tag">Gemini</span></div>
+                  <p>Prompt parametrizable para generar sets coherentes de ilustraciones con fondo limpio, bordes definidos y estilos adaptables.</p>
+                  <div class="match neutral"><span>✦</span><p>Coincide con la parte de <b>generación visual mediante IA</b> y está relacionado con 4 procesos de stickers.</p></div>
+                </div>
+                <button class="open-link">Abrir →</button>
+              </article>
+
+              <article class="result" data-item="EXP-W5R2KP">
+                <div class="result-thumb workflow"><img class="asset-art" src="assets/graphics/workflow-print.svg" alt="Flujo de impresión"><div><i></i><b>→</b><i></i><b>→</b><i></i></div></div>
+                <div class="result-body">
+                  <div class="result-meta"><b>84% relevancia</b><span class="code">EXP-W5R2KP</span></div>
+                  <h3>Flujo — preparación de archivos para impresión</h3>
+                  <div class="meta"><span class="company design">Expert Design</span><span class="tag">Workflow</span><span class="tag">Impresión</span></div>
+                  <p>Checklist y procedimiento para dimensiones, sangrado, resolución, perfiles y exportación del archivo final.</p>
+                  <div class="match neutral"><span>✦</span><p>Complementa el resultado principal con el <b>proceso posterior a la generación</b>.</p></div>
+                </div>
+                <button class="open-link">Abrir →</button>
+              </article>
+            </div>
+
+            <aside class="intent-panel panel">
+              <div class="panel-head"><h3>La IA entendió</h3><span class="ai-badge">✦ Gemini</span></div>
+              <dl>
+                <div><dt>Objetivo</dt><dd>Crear un producto gráfico</dd></div>
+                <div><dt>Formato</dt><dd>Stickers para cuaderno</dd></div>
+                <div><dt>Herramientas</dt><dd>Inteligencia artificial</dd></div>
+                <div><dt>Etapa final</dt><dd>Preparar para impresión</dd></div>
+              </dl>
+              <hr>
+              <h3>También podrías buscar</h3>
+              <button class="query-chip">stickers anime listos para imprimir</button>
+              <button class="query-chip">prompts para ilustraciones infantiles</button>
+              <button class="query-chip">productos escolares Expert Design</button>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATALOG -->
+      <section class="view" id="view-catalog" data-title="Catálogo">
+        <div class="page">
+          <div class="page-title catalog-title">
+            <div><p class="eyebrow">128 ELEMENTOS</p><h1>Catálogo</h1><p class="subtitle">Todo tu conocimiento, procesos, recursos y productos en un mismo lugar.</p></div>
+            <div class="title-actions"><button class="btn-soft">☷ Filtros <b class="mini-count">3</b></button><button class="btn-primary" data-modal="newModal">＋ Nuevo elemento</button></div>
+          </div>
+
+          <div class="catalog-toolbar">
+            <div class="small-search"><span>⌕</span><input id="catalogQuery" placeholder="Buscar por título, código, etiqueta..."></div>
+            <select><option>Última modificación</option><option>Más recientes</option><option>Más usados</option><option>A–Z</option></select>
+            <div class="view-switch"><button class="active" data-catalog-view="grid">▦</button><button data-catalog-view="list">☷</button></div>
+          </div>
+
+          <div class="filters">
+            <button class="active">Empresa <b>Expert Design</b> ⌄</button>
+            <button>Tipo <b>Todos</b> ⌄</button>
+            <button>Estado <b>Activos</b> ⌄</button>
+            <button>Etiquetas ⌄</button>
+            <button>＋ Más filtros</button>
+            <a id="clearFilters">Limpiar filtros</a>
+          </div>
+
+          <div class="selection-bar hidden" id="selectionBar"><span><b id="selectionCount">0</b> seleccionados</span><button data-modal="relationModal">Relacionar</button><button data-modal="composeModal">Crear a partir de selección</button><button data-modal="exportModal">Exportar</button><button id="clearSelection">×</button></div>
+
+          <div class="catalog-grid" id="catalogGrid">
+            <article class="catalog-card" data-title="Stickers escolares colección espacial" data-business-card="Expert Design">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual sticker"><img class="asset-art" src="assets/graphics/stickers-space.svg" alt="Stickers escolares"><div class="sticker-sheet"><i>★</i><i>☺</i><i>✿</i><i>⚡</i><i>♡</i><i>☁</i></div></div>
+              <div class="catalog-body" data-item="EXP-D7K4MX"><div class="row"><span class="code">EXP-D7K4MX</span><span class="status process">En proceso</span></div><h3>Stickers escolares — colección espacial</h3><p>Proceso completo de concepto, IA, diseño y preparación para impresión.</p><div class="meta"><span class="company design">Expert Design</span><span class="tag">Producto</span><span class="tag">IA</span></div><footer><span>18 min</span><span>7 bloques · 4 archivos</span></footer></div>
+            </article>
+
+            <article class="catalog-card" data-title="Megaprompt ilustración infantil" data-business-card="Expert Design">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual prompt-thumb large"><img class="asset-art" src="assets/graphics/cover-purple.svg" alt="Portada de prompt"><b>PROMPT</b><span>{ personaje }</span><span>{ estilo }</span><span>{ formato }</span></div>
+              <div class="catalog-body" data-item="EXP-P3L7SV"><div class="row"><span class="code">EXP-P3L7SV</span><span class="status ready">Probado</span></div><h3>Megaprompt — ilustración infantil</h3><p>Plantilla parametrizable para generar colecciones visuales consistentes.</p><div class="meta"><span class="company design">Expert Design</span><span class="tag">Prompt</span><span class="tag">Gemini</span></div><footer><span>2 h</span><span>Usado 14 veces</span></footer></div>
+            </article>
+
+            <article class="catalog-card" data-title="Clase 08 introducción Python" data-business-card="Expert Academy">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual lesson"><img class="asset-art" src="assets/graphics/academy-python.svg" alt="Clase de Python"><div class="lesson-paper"><b>Python</b><i>01 · Apertura</i><i>02 · Teoría</i><i>03 · Práctica</i></div></div>
+              <div class="catalog-body" data-item="EXP-A4M8QW"><div class="row"><span class="code">EXP-A4M8QW</span><span class="status draft">Borrador</span></div><h3>Clase 08 — Introducción a Python</h3><p>Planificación de 90 minutos con ejercicios, recursos y evaluación.</p><div class="meta"><span class="company academy">Expert Academy</span><span class="tag">Clase</span><span class="tag">Python</span></div><footer><span>Ayer</span><span>12 bloques · 2 archivos</span></footer></div>
+            </article>
+
+            <article class="catalog-card" data-title="Starter autenticación Next.js" data-business-card="Expert Code">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual code-visual"><img class="asset-art" src="assets/graphics/code-nextjs.svg" alt="Código Next.js"><div class="code-box"><i></i><i></i><i></i><pre>auth / nextjs
+prisma adapter
+role guard()</pre></div></div>
+              <div class="catalog-body" data-item="EXP-C9N2TX"><div class="row"><span class="code">EXP-C9N2TX</span><span class="status ready">Probado</span></div><h3>Starter de autenticación Next.js</h3><p>Repositorio reutilizable con login, sesiones, Prisma y rutas protegidas.</p><div class="meta"><span class="company code-company">Expert Code</span><span class="tag">GitHub</span><span class="tag">Next.js</span></div><footer><span>3 ago</span><span>5 relaciones</span></footer></div>
+            </article>
+
+            <article class="catalog-card" data-title="Proveedores franelas algodón" data-business-card="Expert Design">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual shirt"><img class="asset-art" src="assets/graphics/design-shirt-black.svg" alt="Franela Expert"></div>
+              <div class="catalog-body"><div class="row"><span class="code">EXP-D2F6ZR</span><span class="status reference">Referencia</span></div><h3>Proveedores — franelas de algodón</h3><p>Comparativa de materiales, precios, tallas, contactos y muestras.</p><div class="meta"><span class="company design">Expert Design</span><span class="tag">Recurso</span><span class="tag">Proveedor</span></div><footer><span>28 jul</span><span>8 enlaces</span></footer></div>
+            </article>
+
+            <article class="catalog-card" data-title="Herramientas clases interactivas" data-business-card="Expert Academy">
+              <label class="check"><input type="checkbox"><i></i></label><button class="dots">•••</button>
+              <div class="catalog-visual tools"><img class="asset-art" src="assets/graphics/resource-web-grid.svg" alt="Directorio de herramientas"><div><span>◈</span><span>△</span><span>○</span><span>□</span></div></div>
+              <div class="catalog-body"><div class="row"><span class="code">EXP-A8V1HN</span><span class="status ready">Activo</span></div><h3>Herramientas para clases interactivas</h3><p>Directorio comentado de webs y aplicaciones para dinámicas en clase.</p><div class="meta"><span class="company academy">Expert Academy</span><span class="tag">Webs</span><span class="tag">Recursos</span></div><footer><span>25 jul</span><span>16 enlaces</span></footer></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CANVAS -->
+      <section class="view canvas-view" id="view-canvas" data-title="Lienzo">
+        <div class="canvas-head">
+          <div class="canvas-name"><button data-view="catalog">←</button><div><div class="meta"><span class="company design">Expert Design</span><span class="code">EXP-D7K4MX</span></div><input value="Stickers escolares — colección espacial" id="canvasTitle"></div></div>
+          <div class="save-state"><i></i><span id="saveState">Guardado</span></div>
+          <div class="canvas-actions"><button>⌕</button><button data-modal="layoutModal">▦ <span>Layout</span></button><button data-modal="versionModal">↺ <span>Versiones</span></button><button data-modal="relationModal">⌁ <span>Relacionar</span></button><button data-modal="exportModal">⇧ <span>Exportar</span></button><button class="btn-primary small">Compartir</button><button>•••</button></div>
+        </div>
+
+        <div class="canvas-shell" id="canvasShell">
+          <aside class="outline" id="outline">
+            <div class="pane-head"><b>Contenido</b><button id="closeOutline">‹</button></div>
+            <nav>
+              <button class="active"><span>01</span>Resumen</button>
+              <button><span>02</span>Objetivo</button>
+              <button><span>03</span>Prompt de generación</button>
+              <button><span>04</span>Proceso</button>
+              <button><span>05</span>Referencias visuales</button>
+              <button><span>06</span>Preparación final</button>
+              <button><span>07</span>Relaciones</button>
+            </nav>
+            <button class="add-section">＋ Agregar sección</button>
+          </aside>
+
+          <div class="canvas-scroll">
+            <article class="document">
+              <div class="doc-meta">
+                <button>Estado <b>En proceso</b> ⌄</button>
+                <button>Categoría <b>Productos</b> ⌄</button>
+                <button>Tipo <b>Sticker</b> ⌄</button>
+                <button>＋ Etiqueta</button>
+              </div>
+
+              <section class="block rich selected" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="floating"><button><b>B</b></button><button><i>I</i></button><button><u>U</u></button><i></i><button>H1</button><button>☷</button><button>🔗</button><button>•••</button></div>
+                <p class="kicker">RESUMEN</p>
+                <h1>Stickers escolares — colección espacial</h1>
+                <p class="editable" contenteditable="true">Colección de stickers para cuadernos inspirada en personajes espaciales amigables. Este documento conserva el flujo completo para repetir el producto sin reconstruir el proceso desde cero.</p>
+              </section>
+
+              <div class="ai-summary">
+                <span>✦</span><div><b>Resumen generado por Gemini</b><p>Proceso reutilizable de diseño de stickers escolares: define concepto, genera ilustraciones con un prompt parametrizable, selecciona resultados y prepara archivos para impresión.</p></div><button>Regenerar</button><button>×</button>
+              </div>
+
+              <section class="block callout" data-block>
+                <span class="handle">⋮⋮</span><span class="block-icon callout-icon">◎</span><div><b>Objetivo</b><p>Crear una hoja de 12 stickers coherentes, visualmente limpios y listos para impresión en formato A5.</p></div>
+              </section>
+
+              <section class="block prompt-block" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="block-head"><span class="block-icon purple">✦</span><div><small>PROMPT</small><h3>Generación de personajes espaciales</h3></div><button class="copy-prompt">⧉ Copiar prompt</button><button>•••</button></div>
+                <div class="prompt-info"><span>Modelo <b>Gemini 2.5 Flash</b></span><span>Herramienta <b>Gemini</b></span><span>Uso <b>Imagen</b></span></div>
+                <div class="prompt-text">Crea una colección de <mark>{cantidad: 12}</mark> stickers infantiles inspirados en <mark>{tema: espacio}</mark>. Cada personaje debe tener contorno blanco grueso, expresión amigable, composición aislada y fondo transparente. Mantén una paleta coherente y un estilo <mark>{estilo: kawaii vectorial}</mark>...</div>
+                <div class="prompt-foot"><div><small>VARIABLES</small><span>cantidad</span><span>tema</span><span>estilo</span></div><button>Ver prompt completo ↓</button></div>
+              </section>
+
+              <section class="block process-block" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="block-head"><span class="block-icon green">✓</span><div><small>PROCEDIMIENTO</small><h3>Flujo de producción</h3></div><span class="progress-label">4 de 7</span><button>•••</button></div>
+                <div class="steps">
+                  <label class="step done"><input type="checkbox" checked><i></i><b>01</b><span><strong>Definir concepto y temática</strong><small>Elegir tema, público, formato y cantidad.</small></span><button>•••</button></label>
+                  <label class="step done"><input type="checkbox" checked><i></i><b>02</b><span><strong>Preparar el megaprompt</strong><small>Ajustar variables según la colección.</small></span><button>•••</button></label>
+                  <label class="step done"><input type="checkbox" checked><i></i><b>03</b><span><strong>Generar propuestas visuales</strong><small>Crear 3–4 variaciones y conservar muestras.</small></span><button>•••</button></label>
+                  <label class="step done"><input type="checkbox" checked><i></i><b>04</b><span><strong>Seleccionar diseños finales</strong><small>Validar coherencia visual y legibilidad.</small></span><button>•••</button></label>
+                  <label class="step"><input type="checkbox"><i></i><b>05</b><span><strong>Limpiar y ajustar archivos</strong><small>Eliminar fondos, revisar bordes y resolución.</small></span><button>•••</button></label>
+                  <label class="step"><input type="checkbox"><i></i><b>06</b><span><strong>Montar hoja A5</strong><small>Distribuir stickers con margen para corte.</small></span><button>•••</button></label>
+                  <label class="step"><input type="checkbox"><i></i><b>07</b><span><strong>Exportar para impresión</strong><small>PDF 300 DPI y archivo fuente editable.</small></span><button>•••</button></label>
+                </div>
+                <button class="add-inline">＋ Agregar paso</button>
+              </section>
+
+              <section class="block gallery-block" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="block-head"><span class="block-icon pink">▧</span><div><small>GALERÍA</small><h3>Referencias visuales y resultados</h3></div><button class="btn-soft tiny">＋ Agregar</button><button>•••</button></div>
+                <div class="gallery">
+                  <div class="gallery-item sticker"><img class="asset-art" src="assets/graphics/stickers-space.svg" alt="Referencia de stickers"><div class="sticker-sheet small"><i>★</i><i>☁</i><i>✿</i><i>☾</i></div><span>Vista 01</span></div>
+                  <div class="gallery-item planet"><img class="asset-art" src="assets/graphics/stickers-planet.svg" alt="Referencia de planetas"><div>◉<i>✦</i></div><span>Vista 02</span></div>
+                  <button class="gallery-upload" data-modal="assetModal"><b>＋</b><span>Elegir gráfico</span><small>o subir uno propio</small></button>
+                </div>
+                <div class="drive-file"><span>△</span><div><b>Archivo fuente — stickers_espacio_v3.fig</b><small>Google Drive · Actualizado 7 ago</small></div><button>Abrir ↗</button></div>
+              </section>
+
+              <section class="block diagram-block" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="block-head"><span class="block-icon gray">⌘</span><div><small>DIAGRAMA MANUAL</small><h3>Flujo resumido</h3></div><button class="btn-soft tiny">Editar diagrama</button><button>•••</button></div>
+                <div class="diagram">
+                  <span>Concepto</span><i>→</i><span>Prompt</span><i>→</i><span>Generar</span><i>→</i><span class="decision">¿Aprobado?</span><i>→</i><span class="final">Imprimir</span>
+                </div>
+              </section>
+
+              <section class="block relation-block" data-block>
+                <span class="handle">⋮⋮</span>
+                <div class="block-head"><span class="block-icon lilac">⌁</span><div><small>RELACIONES</small><h3>Elementos conectados</h3></div><button class="btn-soft tiny" data-modal="relationModal">＋ Relacionar</button></div>
+                <div class="related-grid">
+                  <button><small>UTILIZA</small><b>EXP-P3L7SV</b><span>Megaprompt — ilustración infantil</span><i>Expert Design · Prompt</i></button>
+                  <button><small>COMPLEMENTA</small><b>EXP-W5R2KP</b><span>Preparación de archivos para impresión</span><i>Expert Design · Workflow</i></button>
+                </div>
+              </section>
+
+              <div class="insert-line"><i></i><button id="addBlock">＋</button><i></i></div>
+              <p class="slash">Escribe <kbd>/</kbd> para insertar un bloque o <button id="addBlockText">haz clic aquí</button></p>
+            </article>
+          </div>
+
+          <aside class="properties" id="properties">
+            <div class="pane-head"><b>Propiedades</b><button id="closeProperties">›</button></div>
+            <div class="prop"><label>Empresa</label><button><i class="dot design"></i>Expert Design <span>⌄</span></button></div>
+            <div class="prop-grid"><div><label>Estado</label><button><i class="state-dot"></i>En proceso <span>⌄</span></button></div><div><label>Tipo</label><button>Sticker <span>⌄</span></button></div></div>
+            <div class="prop"><label>Categoría</label><button>Productos físicos <span>⌄</span></button></div>
+            <div class="prop"><label>Etiquetas</label><div class="tags-editor"><span>IA ×</span><span>Stickers ×</span><span>Impresión ×</span><button>＋</button></div></div>
+            <div class="prop"><label>Descripción</label><textarea>Proceso reutilizable para crear colecciones de stickers escolares mediante IA y prepararlas para impresión.</textarea><a>✦ Mejorar con Gemini</a></div>
+            <div class="prop"><label>Vista previa</label><div class="preview-small sticker"><div class="sticker-sheet small"><i>★</i><i>☺</i><i>✿</i><i>⚡</i></div></div></div>
+            <div class="prop"><label>Información</label><dl class="info"><div><dt>Creado</dt><dd>17 jul 2026</dd></div><div><dt>Modificado</dt><dd>Hace 18 min</dd></div><div><dt>Versión</dt><dd>v12</dd></div><div><dt>Bloques</dt><dd>7</dd></div></dl></div>
+          </aside>
+          <button class="pane-open left hidden" id="openOutline">›</button>
+          <button class="pane-open right hidden" id="openProperties">‹</button>
+        </div>
+      </section>
+
+      <!-- TEMPLATES -->
+      <section class="view" id="view-templates" data-title="Plantillas">
+        <div class="page">
+          <div class="page-title">
+            <div><p class="eyebrow">BUILDER REUTILIZABLE</p><h1>Plantillas</h1><p class="subtitle">Empieza rápido con estructuras preparadas y crea las tuyas sin formularios rígidos.</p></div>
+            <button class="btn-primary" id="createTemplate">＋ Crear plantilla</button>
+          </div>
+          <div class="tabs"><button class="active" data-tab="gallery">Galería</button><button data-tab="builder">Builder</button><button data-tab="mine">Mis plantillas <span>6</span></button></div>
+
+          <div class="tab-pane active" id="tab-gallery">
+            <div class="template-hero">
+              <div><small>RECOMENDADA</small><h2>Planificación de clase</h2><p>Estructura una sesión con objetivos, duración, recursos, actividades, evaluación y notas.</p><div><span>Expert Academy</span><span>11 bloques</span><span>Editable</span></div><button class="btn-primary use-template" data-template="Planificación de clase">Usar plantilla →</button></div>
+              <div class="paper-demo"><i></i><span></span><span></span><div><b></b><b></b><b></b></div><span></span><span></span></div>
+            </div>
+            <div class="section-head"><div><h2>Plantillas iniciales</h2><p>Diseñadas para tus casos de uso principales.</p></div><div class="small-search short"><span>⌕</span><input placeholder="Buscar plantilla..."></div></div>
+            <div class="templates-grid">
+              <button class="template-card use-template" data-template="Producto físico"><span class="ticon product">▣</span><h3>Producto físico</h3><p>Concepto, materiales, proceso, costos, archivos y resultado.</p><footer>Expert Design <b>9 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Sticker"><span class="ticon stickers">✿</span><h3>Sticker</h3><p>Idea, prompts, muestras, flujo, dimensiones y preparación.</p><footer>Expert Design <b>10 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Franela"><span class="ticon tshirt">T</span><h3>Franela</h3><p>Diseño, mockups, proveedores, tallas, archivos y producción.</p><footer>Expert Design <b>8 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Repositorio GitHub"><span class="ticon github">&lt;/&gt;</span><h3>Repositorio GitHub</h3><p>URL, propósito, stack, instalación, snippets y notas de uso.</p><footer>Expert Code <b>7 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Investigación"><span class="ticon research">⌕</span><h3>Investigación</h3><p>Pregunta, fuentes, hallazgos, comparativa y conclusiones.</p><footer>General <b>9 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Workflow"><span class="ticon workflow">→</span><h3>Proceso / workflow</h3><p>Objetivo, pasos, herramientas, decisiones, archivos y resultado.</p><footer>General <b>8 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Recurso web"><span class="ticon web">↗</span><h3>Recurso web</h3><p>Enlace, preview, utilidad, casos de uso, precio y etiquetas.</p><footer>General <b>6 bloques</b></footer></button>
+              <button class="template-card use-template" data-template="Documento libre"><span class="ticon doc">Aa</span><h3>Documento libre</h3><p>Un lienzo de texto enriquecido para cualquier contenido.</p><footer>General <b>1 bloque</b></footer></button>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-builder">
+            <div class="builder">
+              <aside class="panel builder-library"><div class="panel-head"><div><h3>Bloques disponibles</h3><p>Agrega al lienzo.</p></div></div><div class="block-library">
+                <button data-builder="Título"><span>H</span>Título</button><button data-builder="Texto"><span>Aa</span>Texto</button><button data-builder="Checklist"><span>✓</span>Checklist</button><button data-builder="Prompt"><span>✦</span>Prompt</button><button data-builder="Pasos"><span>1.</span>Pasos</button><button data-builder="Galería"><span>▧</span>Galería</button><button data-builder="Archivo"><span>◫</span>Archivo</button><button data-builder="Enlace"><span>↗</span>Enlace</button><button data-builder="Tabla"><span>▦</span>Tabla</button><button data-builder="Diagrama"><span>⌘</span>Diagrama</button>
+              </div></aside>
+              <main class="panel builder-main">
+                <div class="builder-head"><div><small>NUEVA PLANTILLA</small><input value="Proceso creativo personalizado"></div><div><button class="btn-soft">Vista previa</button><button class="btn-primary small">Guardar plantilla</button></div></div>
+                <div class="builder-paper" id="builderPaper"><div class="builder-empty"><span>＋</span><b>Comienza agregando bloques</b><p>Selecciona un bloque de la izquierda. Luego podrás reordenarlo y definir contenido inicial.</p></div></div>
+              </main>
+              <aside class="panel builder-settings"><div class="panel-head"><h3>Configuración</h3></div>
+                <label>Empresa sugerida<select><option>Sin definir</option><option>Expert Academy</option><option>Expert Design</option><option>Expert Code</option></select></label>
+                <label>Tipo sugerido<select><option>Proceso</option><option>Producto</option><option>Documento</option></select></label>
+                <label>Descripción<textarea>Plantilla reutilizable para documentar procesos creativos.</textarea></label>
+                <label class="toggle-row"><span><b>Generar descripción con IA</b><small>Al crear un elemento</small></span><input type="checkbox" checked></label>
+                <label class="toggle-row"><span><b>Mostrar wizard inicial</b><small>Solicitar datos mínimos</small></span><input type="checkbox"></label>
+              </aside>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-mine"><div class="empty"><span>◇</span><h3>Tus plantillas aparecerán aquí</h3><p>Abre el Builder para diseñar una estructura personalizada.</p><button class="btn-primary" id="openBuilder">Abrir builder</button></div></div>
+        </div>
+      </section>
+
+      <!-- INBOX -->
+      <section class="view" id="view-inbox" data-title="Bandeja">
+        <div class="page">
+          <div class="page-title">
+            <div><p class="eyebrow">CAPTURA PRIMERO · ORGANIZA DESPUÉS</p><h1>Bandeja por organizar</h1><p class="subtitle">Ideas y recursos que guardaste rápido y todavía necesitan clasificación.</p></div>
+            <button class="btn-primary" data-modal="captureModal">⚡ Captura rápida</button>
+          </div>
+          <div class="inbox-summary"><div><b>7</b><span>Pendientes</span></div><div><b>4</b><span>Con sugerencias IA</span></div><div><b>2</b><span>Con archivos</span></div><button>✦ Organizar con Gemini</button></div>
+          <div class="inbox-list">
+            <article><label class="check static"><input type="checkbox"><i></i></label><div class="inbox-icon green">↗</div><div><h3>Web para generar mockups de franelas</h3><p>https://ejemplo.com/mockup-shirt · guardado desde captura rápida</p><div class="meta-line"><span>Hoy · 5:42 PM</span><b>✦ IA sugiere: Expert Design · Recurso web</b></div></div><div><button class="btn-soft tiny">Aceptar sugerencia</button><button class="dots static">•••</button></div></article>
+            <article><label class="check static"><input type="checkbox"><i></i></label><div class="inbox-icon purple">Aa</div><div><h3>Idea: curso corto de Git para estudiantes</h3><p>Hacerlo en 3 sesiones, incluir GitHub Desktop y un mini proyecto colaborativo.</p><div class="meta-line"><span>Ayer · 11:18 PM</span><b class="academy-bg">✦ IA sugiere: Expert Academy · Idea</b></div></div><div><button class="btn-soft tiny">Aceptar sugerencia</button><button class="dots static">•••</button></div></article>
+            <article><label class="check static"><input type="checkbox"><i></i></label><div class="inbox-icon red">PDF</div><div><h3>pricing-referencia-competencia.pdf</h3><p>3.8 MB · documento pendiente de revisar</p><div class="meta-line"><span>7 ago · 3:02 PM</span><b class="code-bg">✦ IA sugiere: Expert Code · Investigación</b></div></div><div><button class="btn-soft tiny">Aceptar sugerencia</button><button class="dots static">•••</button></div></article>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- VISUAL ASSETS -->
+      <section class="view" id="view-assets" data-title="Biblioteca visual">
+        <div class="page">
+          <div class="page-title">
+            <div>
+              <p class="eyebrow">RECURSOS INCLUIDOS EN EL MOCKUP</p>
+              <h1>Biblioteca visual</h1>
+              <p class="subtitle">Gráficos SVG incluidos físicamente en el proyecto. Puedes reutilizarlos como portada, preview, imagen de galería o referencia sin tener que crear recursos desde cero.</p>
+            </div>
+            <button class="btn-primary" data-modal="assetModal">▧ Elegir gráfico</button>
+          </div>
+
+          <div class="asset-toolbar">
+            <div class="small-search"><span>⌕</span><input id="assetSearch" placeholder="Buscar stickers, clases, código, franelas, workflows..."></div>
+            <div class="asset-categories" id="assetCategories">
+              <button class="active" data-asset-category="Todos">Todos <b>40</b></button>
+              <button data-asset-category="Stickers">Stickers</button>
+              <button data-asset-category="Academy">Academy</button>
+              <button data-asset-category="Code">Code</button>
+              <button data-asset-category="Design">Design</button>
+              <button data-asset-category="Workflows">Workflows</button>
+              <button data-asset-category="Resources">Recursos</button>
+              <button data-asset-category="Covers">Portadas</button>
+            </div>
+          </div>
+
+          <div class="asset-info">
+            <span>i</span>
+            <p><b>Estos recursos forman parte de la especificación visual.</b> La implementación real debe conservar esta biblioteca inicial y permitir subir recursos propios posteriormente.</p>
+          </div>
+
+          <div class="asset-grid" id="assetGrid"></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="view" id="view-settings" data-title="Configuración">
+        <div class="page">
+          <div class="page-title"><div><p class="eyebrow">SISTEMA</p><h1>Configuración</h1><p class="subtitle">Personaliza el comportamiento sin convertir la aplicación en una consola técnica.</p></div></div>
+          <div class="settings-layout">
+            <aside class="settings-nav">
+              <button class="active" data-settings="general">General</button><button data-settings="businesses">Empresas</button><button data-settings="taxonomy">Categorías y estados</button><button data-settings="ai">✦ Inteligencia artificial</button><button data-settings="files">Archivos</button><button data-settings="export">Exportación</button><button data-settings="security">Seguridad</button>
+            </aside>
+            <div class="settings-content">
+              <section class="setting active" id="setting-general"><div class="setting-head"><div><h2>General</h2><p>Preferencias básicas del espacio de trabajo.</p></div><button class="btn-primary small">Guardar cambios</button></div><div class="settings-card"><label>Nombre del espacio<input value="Expert Hub"></label><label>Vista inicial<select><option>Inicio</option><option>Catálogo</option><option>Buscar</option></select></label><label class="toggle-row"><span><b>Guardado automático</b><small>Guardar los cambios mientras trabajas.</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><b>Captura rápida global</b><small>Acceso desde cualquier pantalla.</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><b>Previsualizaciones enriquecidas</b><small>Imágenes, enlaces y archivos en tarjetas.</small></span><input type="checkbox" checked></label></div></section>
+              <section class="setting" id="setting-businesses"><div class="setting-head"><div><h2>Empresas</h2><p>Colores e identificación visual.</p></div><button class="btn-primary small">＋ Empresa</button></div><div class="settings-card company-list"><div><i class="dot academy"></i><b>Expert Academy</b><span>42 elementos</span><button>Editar</button></div><div><i class="dot design"></i><b>Expert Design</b><span>51 elementos</span><button>Editar</button></div><div><i class="dot code"></i><b>Expert Code</b><span>35 elementos</span><button>Editar</button></div></div></section>
+              <section class="setting" id="setting-taxonomy"><div class="setting-head"><div><h2>Categorías y estados</h2><p>Mantén una clasificación simple y consistente.</p></div></div><div class="settings-card"><h3>Estados</h3><div class="pill-editor"><span><i class="state idea"></i>Idea</span><span><i class="state draft"></i>Borrador</span><span><i class="state process"></i>En proceso</span><span><i class="state ready"></i>Probado</span><span><i class="state done"></i>Listo</span><button>＋ Agregar</button></div><hr><h3>Categorías principales</h3><div class="pill-editor"><span>Productos <b>32</b></span><span>Clases <b>18</b></span><span>Procesos <b>26</b></span><span>Recursos <b>29</b></span><span>Investigación <b>11</b></span><button>＋ Nueva</button></div></div></section>
+              <section class="setting" id="setting-ai"><div class="setting-head"><div><h2><span class="ai-title">✦</span>Inteligencia artificial</h2><p>Gemini ayuda a describir, organizar, relacionar y buscar sin exponer complejidad técnica.</p></div><span class="connected">● Conectado</span></div><div class="settings-card">
+                <div class="provider"><span>✦</span><div><b>Google Gemini</b><small>Proveedor activo</small></div><button class="btn-soft tiny">Probar conexión</button></div>
+                <div class="two-cols"><label>Modelo principal<select><option>Gemini 2.5 Flash</option><option>Gemini 2.5 Pro</option></select></label><label>Embeddings<select><option>Modelo recomendado</option></select></label></div>
+                <label>API Key<div class="secret"><input id="apiKey" type="password" value="••••••••••••••••••••"><button id="toggleSecret">Mostrar</button></div><small>Se almacenará cifrada en el servidor.</small></label>
+                <hr><h3>¿Dónde quieres ayuda de Gemini?</h3>
+                <label class="toggle-row"><span><b>Generar descripciones</b><small>Al guardar elementos nuevos.</small></span><input type="checkbox" checked></label>
+                <label class="toggle-row"><span><b>Sugerir empresa, categoría y etiquetas</b><small>Especialmente en Captura rápida.</small></span><input type="checkbox" checked></label>
+                <label class="toggle-row"><span><b>Preparar búsqueda semántica</b><small>Indexar contenido para buscar por intención.</small></span><input type="checkbox" checked></label>
+                <label class="toggle-row"><span><b>Sugerir elementos relacionados</b><small>Mostrar conexiones útiles.</small></span><input type="checkbox" checked></label>
+                <div class="friendly"><span>i</span><p><b>No necesitas configurar parámetros técnicos para usar la IA.</b><br>Los valores avanzados pueden conservar defaults seguros en el backend.</p></div>
+              </div></section>
+              <section class="setting" id="setting-files"><div class="setting-head"><div><h2>Archivos</h2><p>Carga directa y referencias externas.</p></div></div><div class="settings-card"><label>Almacenamiento<select><option>Storage de la aplicación</option></select></label><label class="toggle-row"><span><b>Permitir enlaces de Google Drive</b><small>Guardar URL y preview sin duplicar.</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><b>Generar miniaturas</b><small>Imágenes, videos y documentos.</small></span><input type="checkbox" checked></label></div></section>
+              <section class="setting" id="setting-export"><div class="setting-head"><div><h2>Exportación</h2><p>Formatos disponibles por defecto.</p></div></div><div class="settings-card export-checks"><label><input type="checkbox" checked>Markdown (.md)</label><label><input type="checkbox" checked>PDF (.pdf)</label><label><input type="checkbox" checked>Imagen (.png)</label><label><input type="checkbox" checked>Word (.docx)</label><label><input type="checkbox" checked>Excel (.xlsx)</label></div></section>
+              <section class="setting" id="setting-security"><div class="setting-head"><div><h2>Seguridad</h2><p>Acceso privado para un único rol.</p></div></div><div class="settings-card"><label class="toggle-row"><span><b>Autenticación obligatoria</b><small>Todo requiere sesión activa.</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><b>Historial de actividad</b><small>Registrar cambios y restauraciones.</small></span><input type="checkbox" checked></label><button class="btn-soft">Cambiar contraseña</button></div></section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+
+<!-- LAYOUT -->
+<div class="overlay" id="layoutModal">
+  <div class="modal layout-modal">
+    <div class="modal-head">
+      <div>
+        <small>DISEÑO DEL LIENZO</small>
+        <h2>Organiza el workspace a tu manera</h2>
+        <p>Los bloques siguen una cuadrícula de 12 columnas. Puedes combinarlos en una, dos o tres columnas y cambiar su tamaño individualmente.</p>
+      </div>
+      <button class="close-modal">×</button>
+    </div>
+    <div class="layout-presets">
+      <button data-layout-preset="stack">
+        <div class="layout-preview one"><i></i><i></i><i></i></div>
+        <b>Una columna</b><small>Lectura tradicional</small>
+      </button>
+      <button data-layout-preset="two">
+        <div class="layout-preview two"><i></i><i></i><i></i><i></i></div>
+        <b>Dos columnas</b><small>Comparar contenido</small>
+      </button>
+      <button data-layout-preset="three">
+        <div class="layout-preview three"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <b>Tres columnas</b><small>Workspace compacto</small>
+      </button>
+      <button data-layout-preset="smart" class="active">
+        <div class="layout-preview smart"><i></i><i></i><i></i><i></i><i></i></div>
+        <b>Composición libre</b><small>Mezcla de anchos</small>
+      </button>
+    </div>
+    <div class="layout-help">
+      <span>↕</span><p><b>Arrastra cualquier bloque para reordenarlo.</b><br>Usa los botones ⅓, ½, ⅔ y 1/1 que aparecen al pasar el mouse, o arrastra el borde derecho para cambiar su ancho.</p>
+    </div>
+    <div class="modal-foot">
+      <span>El layout se guardaría dentro de cada elemento.</span>
+      <button class="btn-primary close-modal">Listo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ASSET PICKER -->
+<div class="overlay" id="assetModal">
+  <div class="modal asset-modal">
+    <div class="modal-head">
+      <div>
+        <small>BIBLIOTECA VISUAL</small>
+        <h2>Elige un gráfico incluido</h2>
+        <p>Úsalo como portada, preview o imagen dentro del lienzo. También podrás subir tus propios archivos en el sistema final.</p>
+      </div>
+      <button class="close-modal">×</button>
+    </div>
+    <div class="asset-picker-tools">
+      <div class="small-search"><span>⌕</span><input id="assetPickerSearch" placeholder="Buscar en 40 gráficos..."></div>
+    </div>
+    <div class="asset-picker-grid" id="assetPickerGrid"></div>
+    <div class="modal-foot">
+      <span id="assetSelectedLabel">Ningún gráfico seleccionado</span>
+      <div><button class="text-btn close-modal">Cancelar</button><button class="btn-primary" id="useAssetBtn">Usar gráfico</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMAND PALETTE -->
+<div class="overlay" id="commandModal">
+  <div class="command">
+    <div class="command-input"><span>⌕</span><input placeholder="Busca cualquier cosa o escribe un comando..."><kbd>ESC</kbd></div>
+    <div class="command-body">
+      <small>SUGERIDOS</small>
+      <button data-item="EXP-D7K4MX"><span class="cmd-icon design-bg">✿</span><div><b>Stickers escolares — colección espacial</b><i>EXP-D7K4MX · Expert Design</i></div><em>Elemento</em></button>
+      <button data-item="EXP-A4M8QW"><span class="cmd-icon academy-bg">A</span><div><b>Clase 08 — Introducción a Python</b><i>EXP-A4M8QW · Expert Academy</i></div><em>Elemento</em></button>
+      <small>ACCIONES RÁPIDAS</small>
+      <button data-modal="newModal" data-close="commandModal"><span class="cmd-icon">＋</span><div><b>Crear nuevo elemento</b><i>Abrir selector de inicio</i></div><kbd>⌘N</kbd></button>
+      <button data-modal="captureModal" data-close="commandModal"><span class="cmd-icon">⚡</span><div><b>Captura rápida</b><i>Guardar algo para organizar después</i></div></button>
+    </div>
+    <div class="command-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navegar</span><span><kbd>↵</kbd> abrir</span><span><kbd>ESC</kbd> cerrar</span></div>
+  </div>
+</div>
+
+<!-- NEW MODAL -->
+<div class="overlay" id="newModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>NUEVO ELEMENTO</small><h2>¿Cómo quieres comenzar?</h2><p>Llega al lienzo en pocos clics. Los detalles secundarios pueden completarse después.</p></div><button class="close-modal">×</button></div>
+    <div class="start-grid">
+      <button data-start="blank" class="featured"><span>＋</span><div><b>Lienzo en blanco</b><p>Empieza limpio y agrega bloques a medida que los necesites.</p></div><i>→</i></button>
+      <button data-start="template"><span>◇</span><div><b>Desde plantilla</b><p>Planificación, producto, sticker, repositorio, workflow y más.</p></div><i>→</i></button>
+      <button data-start="capture"><span>⚡</span><div><b>Captura rápida</b><p>Guarda una idea, enlace o archivo y organízalo después.</p></div><i>→</i></button>
+      <button data-start="duplicate"><span>⧉</span><div><b>Duplicar existente</b><p>Usa otro elemento como punto de partida y conserva la referencia.</p></div><i>→</i></button>
+    </div>
+    <div class="modal-foot"><span>Atajo: <kbd>⌘N</kbd></span><button class="text-btn close-modal">Cancelar</button></div>
+  </div>
+</div>
+
+<!-- CAPTURE -->
+<div class="overlay" id="captureModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>⚡ CAPTURA RÁPIDA</small><h2>Guárdalo ahora. Organízalo después.</h2></div><button class="close-modal">×</button></div>
+    <div class="capture-body">
+      <textarea id="captureText" placeholder="Pega una idea, nota, enlace, prompt o cualquier cosa que no quieras perder..."></textarea>
+      <div class="attach"><button>◫ Subir archivo</button><button>↗ Agregar enlace</button><button>▧ Imagen</button><span>También puedes pegar contenido directamente.</span></div>
+      <div class="capture-ai"><span>✦</span><div><b>Gemini puede organizarlo por ti</b><p>Al guardar, sugerirá empresa, tipo, categoría, etiquetas y una descripción.</p></div><input type="checkbox" checked></div>
+    </div>
+    <div class="modal-foot"><button class="text-btn close-modal">Cancelar</button><button class="btn-primary" id="saveCapture">Guardar en bandeja</button></div>
+  </div>
+</div>
+
+<!-- EXPORT -->
+<div class="overlay" id="exportModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>EXPORTAR</small><h2>Exporta este elemento</h2><p>Elige el formato según cómo quieras reutilizar el contenido.</p></div><button class="close-modal">×</button></div>
+    <div class="export-grid">
+      <button class="export-option active" data-format="Markdown"><span>MD</span><div><b>Markdown</b><small>Contenido estructurado y portable.</small></div><i>✓</i></button>
+      <button class="export-option" data-format="PDF"><span class="pdf">PDF</span><div><b>PDF</b><small>Documento listo para compartir.</small></div><i>✓</i></button>
+      <button class="export-option" data-format="Imagen"><span class="png">PNG</span><div><b>Imagen</b><small>Captura visual del contenido.</small></div><i>✓</i></button>
+      <button class="export-option" data-format="Word"><span class="word">W</span><div><b>Word</b><small>Documento editable .docx.</small></div><i>✓</i></button>
+      <button class="export-option" data-format="Excel"><span class="excel">X</span><div><b>Excel</b><small>Datos tabulares y metadatos.</small></div><i>✓</i></button>
+    </div>
+    <div class="export-extra"><label class="toggle-row"><span><b>Incluir portada y metadatos</b><small>Código, empresa, categoría, etiquetas y fecha.</small></span><input type="checkbox" checked></label><label class="toggle-row"><span><b>Incluir relaciones</b><small>Agregar referencias a elementos conectados.</small></span><input type="checkbox" checked></label></div>
+    <div class="modal-foot"><span id="formatSelected">Formato: Markdown</span><div><button class="text-btn close-modal">Cancelar</button><button class="btn-primary" id="doExport">Exportar</button></div></div>
+  </div>
+</div>
+
+<!-- RELATION -->
+<div class="overlay" id="relationModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>RELACIONAR ELEMENTOS</small><h2>Conecta conocimiento reutilizable</h2><p>Las relaciones mejoran navegación, sugerencias y trazabilidad.</p></div><button class="close-modal">×</button></div>
+    <div class="relation-body"><label>Tipo de relación<select><option>utiliza</option><option>relacionado con</option><option>depende de</option><option>deriva de</option><option>complementa</option><option>generado a partir de</option></select></label><label>Buscar elemento<div class="small-search"><span>⌕</span><input placeholder="Título, código o intención..."></div></label><button class="relation-result active"><span class="cmd-icon">P</span><div><b>Megaprompt — ilustración infantil</b><small>EXP-P3L7SV · Expert Design · Prompt</small></div><i>✓</i></button><button class="relation-result"><span class="cmd-icon green">→</span><div><b>Preparación de archivos para impresión</b><small>EXP-W5R2KP · Expert Design · Workflow</small></div><i></i></button></div>
+    <div class="modal-foot"><button class="text-btn close-modal">Cancelar</button><button class="btn-primary" id="saveRelation">Crear relación</button></div>
+  </div>
+</div>
+
+<!-- VERSIONS -->
+<div class="overlay" id="versionModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>HISTORIAL</small><h2>Versiones del elemento</h2><p>Los autosaves se agrupan para mantener un historial útil, no ruidoso.</p></div><button class="close-modal">×</button></div>
+    <div class="versions">
+      <article class="current"><i></i><div><b>v12 · Actual</b><p>Actualización de prompt, checklist y referencias visuales.</p><small>Hoy · 9:48 PM</small></div><span>Actual</span></article>
+      <article><i></i><div><b>v11</b><p>Se agregó el diagrama y relación con preparación para impresión.</p><small>7 ago · 6:14 PM</small></div><button>Restaurar</button></article>
+      <article><i></i><div><b>v10</b><p>Cambio importante guardado manualmente.</p><small>5 ago · 2:05 PM</small></div><button>Restaurar</button></article>
+      <article><i></i><div><b>v9</b><p>Versión inicial del proceso de producción.</p><small>17 jul · 11:20 AM</small></div><button>Restaurar</button></article>
+    </div>
+  </div>
+</div>
+
+<!-- COMPOSE -->
+<div class="overlay" id="composeModal">
+  <div class="modal">
+    <div class="modal-head"><div><small>COMPOSICIÓN</small><h2>Crear a partir de la selección</h2><p>Combina bloques de varios elementos sin perder su procedencia.</p></div><button class="close-modal">×</button></div>
+    <div class="compose-visual"><div class="source-stack"><span>EXP-D7K4MX</span><span>EXP-P3L7SV</span><span>EXP-W5R2KP</span></div><b>→</b><div class="new-doc">＋<small>Nuevo lienzo</small></div></div>
+    <div class="compose-options"><label><input type="checkbox" checked> Conservar referencias a los elementos originales</label><label><input type="checkbox" checked> Copiar bloques seleccionados</label><label><input type="checkbox"> Pedir a Gemini un resumen del nuevo elemento</label></div>
+    <div class="modal-foot"><button class="text-btn close-modal">Cancelar</button><button class="btn-primary" id="composeBtn">Crear nuevo lienzo</button></div>
+  </div>
+</div>
+
+<!-- BLOCK PICKER -->
+<div class="block-picker" id="blockPicker">
+  <div class="picker-search"><span>⌕</span><input id="pickerQuery" placeholder="Buscar bloque..."></div>
+  <small>BLOQUES</small>
+  <div class="picker-grid">
+    <button data-add-block="Texto"><span>Aa</span>Texto</button><button data-add-block="Título"><span>H1</span>Título</button><button data-add-block="Checklist"><span>✓</span>Checklist</button><button data-add-block="Tabla"><span>▦</span>Tabla</button><button data-add-block="Prompt"><span>✦</span>Prompt</button><button data-add-block="Pasos"><span>1.</span>Pasos</button><button data-add-block="Imagen"><span>▧</span>Imagen</button><button data-add-block="Galería"><span>▥</span>Galería</button><button data-add-block="Archivo"><span>◫</span>Archivo</button><button data-add-block="Enlace"><span>↗</span>Enlace</button><button data-add-block="Diagrama"><span>⌘</span>Diagrama</button><button data-add-block="Relacionado"><span>⌁</span>Relacionado</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<script src="app.js"></script>
+</body>
+</html>

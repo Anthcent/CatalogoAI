@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFF7E7"/>
+    <stop offset="1" stop-color="#EAF8F5"/>
+  </linearGradient>
+  <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#283044" flood-opacity=".12"/>
+  </filter>
+</defs>
+<rect width="640" height="420" rx="32" fill="url(#bg)"/>
+<g filter="url(#s)"><g transform="translate(115,110) rotate(-1)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#E7BC86"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🐻</text></g><g transform="translate(250,92) rotate(3)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#F0C4D5"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🐰</text></g><g transform="translate(385,118) rotate(-5)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#D8D8DA"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🐼</text></g><g transform="translate(160,245) rotate(-1)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#E9A064"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🦊</text></g><g transform="translate(310,235) rotate(3)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#85CFB4"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🐸</text></g><g transform="translate(455,245) rotate(-5)"><rect width="105" height="82" rx="24" fill="#fff"/><rect x="7" y="7" width="91" height="68" rx="19" fill="#D7AB82"/><text x="52" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="34" fill="#2D3340">🐶</text></g></g>
+</svg>

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "stickers-space",
+    "file": "assets/graphics/stickers-space.svg",
+    "category": "Stickers",
+    "label": "Espacio kawaii"
+  },
+  {
+    "id": "stickers-school",
+    "file": "assets/graphics/stickers-school.svg",
+    "category": "Stickers",
+    "label": "Escolar divertido"
+  },
+  {
+    "id": "stickers-cats",
+    "file": "assets/graphics/stickers-cats.svg",
+    "category": "Stickers",
+    "label": "Gatos ilustrados"
+  },
+  {
+    "id": "stickers-tech",
+    "file": "assets/graphics/stickers-tech.svg",
+    "category": "Stickers",
+    "label": "Tech icons"
+  },
+  {
+    "id": "stickers-food",
+    "file": "assets/graphics/stickers-food.svg",
+    "category": "Stickers",
+    "label": "Comida cute"
+  },
+  {
+    "id": "stickers-planet",
+    "file": "assets/graphics/stickers-planet.svg",
+    "category": "Stickers",
+    "label": "Planetas"
+  },
+  {
+    "id": "stickers-shapes",
+    "file": "assets/graphics/stickers-shapes.svg",
+    "category": "Stickers",
+    "label": "Formas abstractas"
+  },
+  {
+    "id": "stickers-animals",
+    "file": "assets/graphics/stickers-animals.svg",
+    "category": "Stickers",
+    "label": "Animalitos"
+  },
+  {
+    "id": "academy-python",
+    "file": "assets/graphics/academy-python.svg",
+    "category": "Academy",
+    "label": "Clase de Python"
+  },
+  {
+    "id": "academy-web",
+    "file": "assets/graphics/academy-web.svg",
+    "category": "Academy",
+    "label": "Clase de Web"
+  },
+  {
+    "id": "academy-git",
+    "file": "assets/graphics/academy-git.svg",
+    "category": "Academy",
+    "label": "Curso de Git"
+  },
+  {
+    "id": "academy-ai",
+    "file": "assets/graphics/academy-ai.svg",
+    "category": "Academy",
+    "label": "Clase de IA"
+  },
+  {
+    "id": "academy-plan",
+    "file": "assets/graphics/academy-plan.svg",
+    "category": "Academy",
+    "label": "Planificación"
+  },
+  {
+    "id": "academy-workshop",
+    "file": "assets/graphics/academy-workshop.svg",
+    "category": "Academy",
+    "label": "Taller práctico"
+  },
+  {
+    "id": "code-nextjs",
+    "file": "assets/graphics/code-nextjs.svg",
+    "category": "Code",
+    "label": "Next.js starter"
+  },
+  {
+    "id": "code-api",
+    "file": "assets/graphics/code-api.svg",
+    "category": "Code",
+    "label": "API service"
+  },
+  {
+    "id": "code-prisma",
+    "file": "assets/graphics/code-prisma.svg",
+    "category": "Code",
+    "label": "Prisma schema"
+  },
+  {
+    "id": "code-dashboard",
+    "file": "assets/graphics/code-dashboard.svg",
+    "category": "Code",
+    "label": "Dashboard UI"
+  },
+  {
+    "id": "code-auth",
+    "file": "assets/graphics/code-auth.svg",
+    "category": "Code",
+    "label": "Auth flow"
+  },
+  {
+    "id": "code-github",
+    "file": "assets/graphics/code-github.svg",
+    "category": "Code",
+    "label": "Repositorio GitHub"
+  },
+  {
+    "id": "design-shirt-black",
+    "file": "assets/graphics/design-shirt-black.svg",
+    "category": "Design",
+    "label": "Franela oscura"
+  },
+  {
+    "id": "design-shirt-cream",
+    "file": "assets/graphics/design-shirt-cream.svg",
+    "category": "Design",
+    "label": "Franela crema"
+  },
+  {
+    "id": "design-shirt-purple",
+    "file": "assets/graphics/design-shirt-purple.svg",
+    "category": "Design",
+    "label": "Franela violeta"
+  },
+  {
+    "id": "design-packaging",
+    "file": "assets/graphics/design-packaging.svg",
+    "category": "Design",
+    "label": "Packaging"
+  },
+  {
+    "id": "design-labels",
+    "file": "assets/graphics/design-labels.svg",
+    "category": "Design",
+    "label": "Etiquetas"
+  },
+  {
+    "id": "design-poster",
+    "file": "assets/graphics/design-poster.svg",
+    "category": "Design",
+    "label": "Poster"
+  },
+  {
+    "id": "workflow-print",
+    "file": "assets/graphics/workflow-print.svg",
+    "category": "Workflows",
+    "label": "Flujo de impresión"
+  },
+  {
+    "id": "workflow-class",
+    "file": "assets/graphics/workflow-class.svg",
+    "category": "Workflows",
+    "label": "Flujo de clase"
+  },
+  {
+    "id": "workflow-sales",
+    "file": "assets/graphics/workflow-sales.svg",
+    "category": "Workflows",
+    "label": "Flujo comercial"
+  },
+  {
+    "id": "workflow-product",
+    "file": "assets/graphics/workflow-product.svg",
+    "category": "Workflows",
+    "label": "Flujo de producto"
+  },
+  {
+    "id": "workflow-content",
+    "file": "assets/graphics/workflow-content.svg",
+    "category": "Workflows",
+    "label": "Flujo de contenido"
+  },
+  {
+    "id": "resource-web-grid",
+    "file": "assets/graphics/resource-web-grid.svg",
+    "category": "Resources",
+    "label": "Directorio web"
+  },
+  {
+    "id": "resource-drive",
+    "file": "assets/graphics/resource-drive.svg",
+    "category": "Resources",
+    "label": "Google Drive"
+  },
+  {
+    "id": "resource-pdf",
+    "file": "assets/graphics/resource-pdf.svg",
+    "category": "Resources",
+    "label": "Documento PDF"
+  },
+  {
+    "id": "resource-links",
+    "file": "assets/graphics/resource-links.svg",
+    "category": "Resources",
+    "label": "Colección de enlaces"
+  },
+  {
+    "id": "resource-research",
+    "file": "assets/graphics/resource-research.svg",
+    "category": "Resources",
+    "label": "Investigación"
+  },
+  {
+    "id": "cover-purple",
+    "file": "assets/graphics/cover-purple.svg",
+    "category": "Covers",
+    "label": "Portada violeta"
+  },
+  {
+    "id": "cover-pink",
+    "file": "assets/graphics/cover-pink.svg",
+    "category": "Covers",
+    "label": "Portada rosa"
+  },
+  {
+    "id": "cover-blue",
+    "file": "assets/graphics/cover-blue.svg",
+    "category": "Covers",
+    "label": "Portada azul"
+  },
+  {
+    "id": "cover-green",
+    "file": "assets/graphics/cover-green.svg",
+    "category": "Covers",
+    "label": "Portada verde"
+  }
+]
