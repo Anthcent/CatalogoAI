@@ -14,14 +14,15 @@ export function CanvasEditor({ item }: Props) {
   const [title,setTitle]=useState(item.title); const [description,setDescription]=useState(item.description);
   const [blocks,setBlocks]=useState<BlockDraft[]>(item.blocks.map(b=>({id:b.id,type:b.type,content:b.content as Record<string,unknown>})));
   const [status,setStatus]=useState("Guardado"); const [pending,startTransition]=useTransition();
+  const [toolsOpen,setToolsOpen]=useState(true);
   const initialized=useRef(false);
   useEffect(()=>{ if(!initialized.current){initialized.current=true;return} setStatus("Cambios sin guardar"); const timer=setTimeout(()=>startTransition(async()=>{setStatus("Guardando...");try{await saveItemAction({id:item.id,title,description,blocks});setStatus("Guardado")}catch{setStatus("Error al guardar")}}),1200);return()=>clearTimeout(timer)},[title,description,blocks,item.id]);
   const add=(type:string)=>setBlocks(v=>[...v,{type,content:createBlockContent(type)}]);
   const patch=(index:number,content:Record<string,unknown>)=>setBlocks(v=>v.map((b,i)=>i===index?{...b,content}:b));
   const move=(index:number,delta:number)=>setBlocks(v=>{const n=[...v],to=index+delta;if(to<0||to>=n.length)return v;[n[index],n[to]]=[n[to],n[index]];return n});
-  return <main className="canvas-workspace">
-    <header className="canvas-toolbar"><div><span className="code">{item.publicCode}</span><b>{title || "Sin título"}</b></div><span className="save-status" aria-live="polite">{pending?"Guardando...":status}</span></header>
-    <aside className="canvas-tools"><span className="eyebrow">Herramientas</span>{blockTypes.map(([key,label])=><button type="button" key={key} onClick={()=>add(key)}><Plus size={14}/><span>{label}</span></button>)}</aside>
+  return <main className={`canvas-workspace ${toolsOpen?"":"tools-hidden"}`}>
+    <header className="canvas-toolbar"><div><button className="canvas-tool-toggle" type="button" onClick={()=>setToolsOpen(open=>!open)} aria-label="Mostrar u ocultar herramientas">☰</button><span className="code">{item.publicCode}</span><b>{title || "Sin título"}</b></div><span className="save-status" aria-live="polite">{pending?"Guardando...":status}</span></header>
+    {toolsOpen&&<aside className="canvas-tools"><span className="eyebrow">Herramientas</span>{blockTypes.map(([key,label])=><button type="button" key={key} onClick={()=>add(key)}><Plus size={14}/><span>{label}</span></button>)}</aside>}
     <section className="canvas-center">
       <input className="canvas-title" value={title} onChange={e=>setTitle(e.target.value)} aria-label="Título"/>
       <textarea className="field canvas-description" value={description} onChange={e=>setDescription(e.target.value)} placeholder="Agrega una descripción breve para encontrarlo fácilmente después."/>

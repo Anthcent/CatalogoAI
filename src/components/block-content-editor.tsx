@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Copy } from "lucide-react";
+import { RichTextEditor } from "./rich-text-editor";
 
 type Content = Record<string, unknown>;
 type ChecklistItem = { text: string; checked: boolean };
@@ -9,7 +11,7 @@ type StepItem = { title: string; description: string; done: boolean };
 export function BlockContentEditor({ type, content, onChange }: { type: string; content: Content; onChange: (content: Content) => void }) {
   const field = (key: string, value: unknown) => onChange({ ...content, [key]: value });
   if (type === "prompt") return <div className="special-block prompt-block">
-    <input value={String(content.name ?? "")} onChange={e=>field("name",e.target.value)} placeholder="Nombre del prompt" className="block-title-input"/>
+    <div className="prompt-heading"><input value={String(content.name ?? "")} onChange={e=>field("name",e.target.value)} placeholder="Nombre del prompt" className="block-title-input"/><button type="button" className="btn" onClick={()=>navigator.clipboard.writeText(String(content.text??""))}><Copy size={15}/> Copiar prompt</button></div>
     <textarea value={String(content.text ?? "")} onChange={e=>field("text",e.target.value)} placeholder="Escribe el prompt principal..." rows={6}/>
     <div className="block-fields"><label>Modelo<input value={String(content.model ?? "")} onChange={e=>field("model",e.target.value)} placeholder="Gemini"/></label><label>Variables<input value={String(content.variables ?? "")} onChange={e=>field("variables",e.target.value)} placeholder="tema, estilo, cantidad"/></label></div>
     <label>Instrucciones adicionales<textarea value={String(content.instructions ?? "")} onChange={e=>field("instructions",e.target.value)} rows={2}/></label>
@@ -34,6 +36,7 @@ export function BlockContentEditor({ type, content, onChange }: { type: string; 
   if (type === "link") return <div className="block-fields"><input value={String(content.title??"")} onChange={e=>field("title",e.target.value)} placeholder="Título del enlace"/><input value={String(content.url??"")} onChange={e=>field("url",e.target.value)} placeholder="https://..."/><textarea value={String(content.notes??"")} onChange={e=>field("notes",e.target.value)} placeholder="¿Para qué sirve?" rows={2}/></div>;
   if (type === "image") return <div className="image-block"><input value={String(content.url??"")} onChange={e=>field("url",e.target.value)} placeholder="URL de la imagen o recurso adjunto"/>{Boolean(content.url)&&<Image unoptimized width={800} height={450} src={String(content.url)} alt={String(content.caption??"")}/>}<input value={String(content.caption??"")} onChange={e=>field("caption",e.target.value)} placeholder="Descripción de la imagen"/></div>;
   if (type === "code") return <div className="code-editor"><input value={String(content.language??"")} onChange={e=>field("language",e.target.value)} placeholder="Lenguaje"/><textarea value={String(content.text??"")} onChange={e=>field("text",e.target.value)} placeholder="Pega o escribe el código..." rows={8} spellCheck={false}/></div>;
+  if(type==="paragraph")return <RichTextEditor html={String(content.html??content.text??"")} onChange={html=>{const {text:_,...rest}=content;void _;onChange({...rest,html})}}/>;
   const heading = type === "heading";
   return heading?<input className="block-title-input" value={String(content.text??"")} onChange={e=>field("text",e.target.value)} placeholder="Título"/>:<textarea value={String(content.text??"")} onChange={e=>field("text",e.target.value)} placeholder={type==="callout"?"Información importante...":"Comienza a escribir..."}/>;
 }

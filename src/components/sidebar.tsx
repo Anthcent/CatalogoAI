@@ -4,6 +4,8 @@ import { logoutAction } from "@/modules/auth/actions";
 
 export function Sidebar() {
   return <aside className="sidebar">
+    <input id="nav-collapse" className="nav-collapse" type="checkbox"/>
+    <label htmlFor="nav-collapse" className="nav-collapse-button" title="Mostrar u ocultar menú">☰</label>
     <div className="brand">Archivo Vivo<small>CONOCIMIENTO EXPERTO</small></div>
     <nav className="nav">
       <Link href="/"><Home size={18}/><span>Inicio</span></Link>
