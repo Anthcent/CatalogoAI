@@ -119,3 +119,29 @@ export async function restoreVersionAction(formData: FormData) {
   revalidatePath(`/catalog/${itemId}`); revalidatePath(`/catalog/${itemId}/history`);
   redirect(`/catalog/${itemId}`);
 }
+
+export async function updatePropertiesAction(formData: FormData) {
+  await requireUser();
+  const id = String(formData.get("id") ?? "");
+  const tags = [...new Set(String(formData.get("tags") ?? "").split(",").map(tag => tag.trim().toLowerCase()).filter(Boolean))].slice(0, 30);
+  const businessIds = formData.getAll("businessIds").map(String).filter(Boolean);
+  await db.$transaction(async transaction => {
+    await transaction.catalogItem.update({ where: { id }, data: {
+      typeId: String(formData.get("typeId") ?? "") || null,
+      categoryId: String(formData.get("categoryId") ?? "") || null,
+      statusId: String(formData.get("statusId") ?? "") || null,
+      favorite: formData.get("favorite") === "on",
+      inInbox: formData.get("inInbox") === "on",
+      archivedAt: formData.get("archived") === "on" ? new Date() : null,
+    } });
+    await transaction.itemBusiness.deleteMany({ where: { itemId: id } });
+    if (businessIds.length) await transaction.itemBusiness.createMany({ data: businessIds.map(businessId => ({ itemId: id, businessId })), skipDuplicates: true });
+    await transaction.itemTag.deleteMany({ where: { itemId: id } });
+    for (const name of tags) {
+      const tag = await transaction.tag.upsert({ where: { name }, update: {}, create: { name } });
+      await transaction.itemTag.create({ data: { itemId: id, tagId: tag.id } });
+    }
+  });
+  revalidatePath(`/catalog/${id}`); revalidatePath(`/catalog/${id}/properties`); revalidatePath("/catalog"); revalidatePath("/inbox");
+  redirect(`/catalog/${id}`);
+}
