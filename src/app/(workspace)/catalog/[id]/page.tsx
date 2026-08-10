@@ -4,7 +4,7 @@ import { CanvasEditor } from "@/components/canvas-editor";
 import { ItemTabs } from "@/components/item-tabs";
 
 export default async function ItemPage({params}:{params:Promise<{id:string}>}) {
-  const {id}=await params; const item=await db.catalogItem.findUnique({where:{id},include:{blocks:{orderBy:{position:"asc"}}}}); if(!item)notFound();
+  const {id}=await params; const item=await db.catalogItem.findUnique({where:{id},include:{blocks:{orderBy:{position:"asc"}},type:true,status:true,category:true,businesses:{include:{business:true}},assets:{select:{id:true}},links:{select:{id:true}}}}); if(!item)notFound();
   await db.catalogItem.update({where:{id},data:{lastOpenedAt:new Date(),openCount:{increment:1}}});
   return <><ItemTabs id={id} active="canvas"/><CanvasEditor item={item}/></>;
 }

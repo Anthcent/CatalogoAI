@@ -196,3 +196,23 @@ export async function applyAiOrganizationAction(formData: FormData) {
   revalidatePath(`/catalog/${id}`); revalidatePath(`/catalog/${id}/properties`); revalidatePath("/inbox");
   redirect(`/catalog/${id}/properties`);
 }
+
+export async function composeItemsAction(formData: FormData) {
+  const user = await requireUser();
+  const sourceIds = [...new Set(formData.getAll("itemIds").map(String).filter(Boolean))];
+  if (sourceIds.length < 2) throw new Error("Selecciona al menos dos elementos para combinarlos.");
+  const sources = await db.catalogItem.findMany({ where: { id: { in: sourceIds }, archivedAt: null }, include: { blocks: { orderBy: { position: "asc" } } } });
+  if (sources.length < 2) throw new Error("No se encontraron suficientes elementos disponibles.");
+  const combinedBlocks = sources.flatMap(source => [
+    { type: "heading", content: { text: `${source.publicCode} · ${source.title}` } as Prisma.InputJsonValue },
+    ...source.blocks.map(block => ({ type: block.type, content: block.content as Prisma.InputJsonValue })),
+    { type: "callout", content: { text: `Contenido incorporado desde ${source.publicCode}` } as Prisma.InputJsonValue },
+  ]);
+  const item = await db.catalogItem.create({ data: {
+    publicCode: await uniqueCode(), title: String(formData.get("title") ?? "").trim() || `Composición de ${sources.length} elementos`,
+    description: `Creado a partir de ${sources.map(source=>source.publicCode).join(", ")}.`, createdById: user.id,
+    blocks: { create: combinedBlocks.map((block, position) => ({ ...block, position })) },
+    outgoing: { create: sources.map(source => ({ targetItemId: source.id, relationType: "generado a partir de" })) },
+  } });
+  redirect(`/catalog/${item.id}`);
+}
