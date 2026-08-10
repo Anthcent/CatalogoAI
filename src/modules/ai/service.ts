@@ -11,7 +11,7 @@ export async function organizeContent(content: string): Promise<AiOrganization> 
   const ai = client();
   const response = await ai.models.generateContent({
     model: process.env.GEMINI_MODEL ?? "gemini-2.5-flash",
-    contents: `Organize this catalog knowledge:\n\n${content.slice(0, 20000)}`,
+    contents: `Organiza este conocimiento de catálogo. Responde completamente en español, con una descripción breve y etiquetas concisas:\n\n${content.slice(0, 20000)}`,
     config: { responseMimeType: "application/json", responseSchema: { type: Type.OBJECT, required: ["title", "description", "category", "type", "tags"], properties: {
       title: { type: Type.STRING }, description: { type: Type.STRING }, category: { type: Type.STRING }, type: { type: Type.STRING }, tags: { type: Type.ARRAY, items: { type: Type.STRING } },
     } } },

@@ -175,3 +175,24 @@ export async function deleteAssetAction(formData: FormData) {
   }
   revalidatePath(`/catalog/${itemId}/resources`);
 }
+
+export async function applyAiOrganizationAction(formData: FormData) {
+  await requireUser();
+  const id = String(formData.get("id") ?? "");
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const categoryName = String(formData.get("category") ?? "").trim();
+  const typeName = String(formData.get("type") ?? "").trim();
+  const tags = [...new Set(String(formData.get("tags") ?? "").split(",").map(tag=>tag.trim().toLowerCase()).filter(Boolean))].slice(0,30);
+  await db.$transaction(async transaction => {
+    const category = categoryName ? await transaction.category.upsert({ where: { name: categoryName }, update: {}, create: { name: categoryName } }) : null;
+    const type = typeName ? await transaction.itemType.upsert({ where: { name: typeName }, update: {}, create: { name: typeName } }) : null;
+    await transaction.catalogItem.update({ where: { id }, data: { title: title || undefined, description: description || undefined, categoryId: category?.id, typeId: type?.id, inInbox: false } });
+    for (const name of tags) {
+      const tag = await transaction.tag.upsert({ where: { name }, update: {}, create: { name } });
+      await transaction.itemTag.upsert({ where: { itemId_tagId: { itemId: id, tagId: tag.id } }, update: {}, create: { itemId: id, tagId: tag.id } });
+    }
+  });
+  revalidatePath(`/catalog/${id}`); revalidatePath(`/catalog/${id}/properties`); revalidatePath("/inbox");
+  redirect(`/catalog/${id}/properties`);
+}
