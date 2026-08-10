@@ -36,6 +36,8 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "expert_hub_v2",
+    "expert_catalog_mockup"
   ]
 }

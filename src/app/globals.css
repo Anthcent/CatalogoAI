@@ -56,6 +56,10 @@ h1 { font-size:clamp(32px,5vw,56px); line-height:1.04; letter-spacing:-1.5px; }
 .auth-art { background:var(--nav); color:white; padding:8vw; display:flex; flex-direction:column; justify-content:flex-end; }
 .auth-form { display:grid; place-items:center; padding:30px; }
 .auth-form form { width:min(400px,100%); }
+.auth-stack { width:min(400px,100%); display:grid; gap:14px; }
+.version-divider { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:11px; }
+.version-divider:before,.version-divider:after { content:""; height:1px; flex:1; background:var(--line); }
+.v2-button { background:#ede9fe; border-color:#c4b5fd; color:#5b21b6; font-weight:700; }
 .canvas { max-width:900px; margin:auto; padding:34px 20px 100px; }
 .canvas-workspace { min-height:calc(100vh - 120px); padding:16px; display:grid; grid-template-columns:150px minmax(420px,1fr) 230px; grid-template-rows:auto 1fr auto; grid-template-areas:"toolbar toolbar context" "tools center context" "tools footer context"; gap:14px; }
 .canvas-workspace.tools-hidden { grid-template-columns:minmax(420px,1fr) 230px; grid-template-areas:"toolbar context" "center context" "footer context"; }
