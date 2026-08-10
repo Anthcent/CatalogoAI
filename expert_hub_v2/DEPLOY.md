@@ -1,24 +1,26 @@
 # Desplegar Expert Hub V2
 
-La V2 se despliega como segundo servicio sin reemplazar la aplicación estable.
+Expert Hub V2 reutiliza el servicio estable existente. El Dockerfile raiz construye V2 con el mismo contrato de ejecucion que ya usa Dokploy.
 
-## Hexper Ops / Dokploy
+## Configuracion existente
 
 | Campo | Valor |
 |---|---|
 | Repositorio | `Anthcent/CatalogoAI` |
 | Rama | `main` |
-| Contexto de construcción | `/` |
-| Dockerfile | `/expert_hub_v2/Dockerfile` |
+| Contexto de construccion | `/` |
+| Dockerfile | `/Dockerfile` |
 | Puerto interno | `8080` |
-| Base de datos | No, durante la fase visual aislada |
+| Base de datos | `DATABASE_URL` existente |
+| Volumen persistente | `/app/uploads` |
 
-El contenedor escucha en `0.0.0.0:8080`, ejecuta como usuario no privilegiado y comprueba `http://127.0.0.1:8080/`.
+`GEMINI_API_KEY`, `GEMINI_MODEL` y `GEMINI_EMBEDDING_MODEL` se heredan del servicio existente. V2 no ejecuta migraciones: usa el esquema PostgreSQL administrado por la aplicacion original.
 
-Cuando Hexper Ops entregue la URL, configúrala en el servicio estable:
+## Verificacion posterior
 
-```text
-EXPERT_HUB_V2_URL=https://url-asignada-a-la-v2
-```
+1. Comprueba que `/login` abre y acepta el usuario existente.
+2. Crea un elemento, edita el lienzo y confirma que aparece una version.
+3. Sube un archivo y reinicia el servicio para comprobar su persistencia en `/app/uploads`.
+4. Busca el elemento y valida Gemini cuando la clave este configurada.
 
-El botón `Abrir Expert Hub V2` del login comenzará a redirigir a ese servicio.
+El contenedor escucha en `0.0.0.0:8080`, se ejecuta como usuario no privilegiado y comprueba `http://127.0.0.1:8080/`.
