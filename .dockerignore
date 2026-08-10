@@ -1,0 +1,13 @@
+.git
+.github
+.next
+.env
+.env.*
+!.env.example
+.atl
+node_modules
+uploads
+coverage
+*.log
+*.tsbuildinfo
+planning_sistema_catalogo_inteligente.md

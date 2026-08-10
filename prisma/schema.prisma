@@ -1,0 +1,233 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String          @id @default(uuid()) @db.Uuid
+  email        String          @unique
+  passwordHash String
+  name         String
+  items        CatalogItem[]
+  searches     SearchHistory[]
+  activities   Activity[]
+  sessions     Session[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
+
+model Session {
+  id        String   @id @default(uuid()) @db.Uuid
+  tokenHash String   @unique
+  userId    String   @db.Uuid
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([userId, expiresAt])
+}
+
+model Business {
+  id       String         @id @default(uuid()) @db.Uuid
+  name     String         @unique
+  slug     String         @unique
+  color    String         @default("#64748b")
+  active   Boolean        @default(true)
+  items    ItemBusiness[]
+  templates Template[]
+}
+
+model CatalogItem {
+  id          String          @id @default(uuid()) @db.Uuid
+  publicCode  String          @unique
+  title       String
+  slug        String?
+  description String          @default("")
+  summary     String          @default("")
+  typeId      String?         @db.Uuid
+  categoryId  String?         @db.Uuid
+  statusId    String?         @db.Uuid
+  createdById String          @db.Uuid
+  favorite    Boolean         @default(false)
+  inInbox     Boolean         @default(false)
+  archivedAt  DateTime?
+  lastOpenedAt DateTime?
+  openCount   Int             @default(0)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  createdBy   User            @relation(fields: [createdById], references: [id])
+  type        ItemType?       @relation(fields: [typeId], references: [id], onDelete: SetNull)
+  category    Category?       @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  status      Status?         @relation(fields: [statusId], references: [id], onDelete: SetNull)
+  businesses  ItemBusiness[]
+  tags        ItemTag[]
+  blocks      Block[]
+  assets      Asset[]
+  links       ExternalLink[]
+  versions    ItemVersion[]
+  embeddings  Embedding[]
+  outgoing    ItemRelation[]  @relation("RelationSource")
+  incoming    ItemRelation[]  @relation("RelationTarget")
+  activities  Activity[]
+  @@index([updatedAt])
+  @@index([title])
+  @@index([inInbox, archivedAt])
+}
+
+model ItemBusiness {
+  itemId     String      @db.Uuid
+  businessId String      @db.Uuid
+  item       CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  business   Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  @@id([itemId, businessId])
+}
+
+model Block {
+  id        String      @id @default(uuid()) @db.Uuid
+  itemId    String      @db.Uuid
+  type      String
+  position  Int
+  content   Json
+  item      CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  assets    Asset[]
+  links     ExternalLink[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  @@unique([itemId, position])
+}
+
+model Category {
+  id          String        @id @default(uuid()) @db.Uuid
+  name        String        @unique
+  description String        @default("")
+  archivedAt  DateTime?
+  items       CatalogItem[]
+}
+
+model Tag {
+  id    String    @id @default(uuid()) @db.Uuid
+  name  String    @unique
+  items ItemTag[]
+}
+
+model ItemTag {
+  itemId String      @db.Uuid
+  tagId  String      @db.Uuid
+  item   CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  tag    Tag         @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  @@id([itemId, tagId])
+}
+
+model ItemType {
+  id    String        @id @default(uuid()) @db.Uuid
+  name  String        @unique
+  icon  String        @default("file")
+  items CatalogItem[]
+  templates Template[]
+}
+
+model Status {
+  id    String        @id @default(uuid()) @db.Uuid
+  name  String        @unique
+  color String        @default("#64748b")
+  order Int
+  items CatalogItem[]
+}
+
+model Asset {
+  id          String      @id @default(uuid()) @db.Uuid
+  itemId      String      @db.Uuid
+  blockId     String?     @db.Uuid
+  storageType String
+  fileName    String
+  mimeType    String
+  size        Int
+  path        String
+  thumbnail   String?
+  metadata    Json?
+  item        CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  block       Block?      @relation(fields: [blockId], references: [id], onDelete: SetNull)
+  createdAt   DateTime    @default(now())
+}
+
+model ExternalLink {
+  id              String      @id @default(uuid()) @db.Uuid
+  itemId          String      @db.Uuid
+  blockId         String?     @db.Uuid
+  url             String
+  title           String      @default("")
+  previewMetadata Json?
+  item            CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  block           Block?      @relation(fields: [blockId], references: [id], onDelete: SetNull)
+}
+
+model Template {
+  id          String     @id @default(uuid()) @db.Uuid
+  name        String     @unique
+  description String     @default("")
+  businessId  String?    @db.Uuid
+  typeId      String?    @db.Uuid
+  structure   Json
+  uses        Int        @default(0)
+  business    Business?  @relation(fields: [businessId], references: [id], onDelete: SetNull)
+  type        ItemType?  @relation(fields: [typeId], references: [id], onDelete: SetNull)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model ItemRelation {
+  id           String      @id @default(uuid()) @db.Uuid
+  sourceItemId String      @db.Uuid
+  targetItemId String      @db.Uuid
+  relationType String
+  source       CatalogItem @relation("RelationSource", fields: [sourceItemId], references: [id], onDelete: Cascade)
+  target       CatalogItem @relation("RelationTarget", fields: [targetItemId], references: [id], onDelete: Cascade)
+  createdAt    DateTime    @default(now())
+  @@unique([sourceItemId, targetItemId, relationType])
+}
+
+model ItemVersion {
+  id        String      @id @default(uuid()) @db.Uuid
+  itemId    String      @db.Uuid
+  version   Int
+  summary   String      @default("")
+  snapshot  Json
+  item      CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+  @@unique([itemId, version])
+}
+
+model Embedding {
+  id         String      @id @default(uuid()) @db.Uuid
+  itemId     String      @db.Uuid
+  sourceType String
+  sourceId   String?
+  textChunk  String
+  vector     Unsupported("vector")?
+  metadata   Json?
+  item       CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  @@index([itemId])
+}
+
+model SearchHistory {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  query     String
+  results   Int      @default(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Activity {
+  id        String       @id @default(uuid()) @db.Uuid
+  userId    String       @db.Uuid
+  itemId    String?      @db.Uuid
+  action    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item      CatalogItem? @relation(fields: [itemId], references: [id], onDelete: SetNull)
+  createdAt DateTime     @default(now())
+  @@index([userId, createdAt])
+}

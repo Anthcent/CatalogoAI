@@ -1,0 +1,10 @@
+node_modules
+.next
+.env
+uploads/*
+!uploads/.gitkeep
+src/generated
+coverage
+*.log
+*.tsbuildinfo
+.atl/
