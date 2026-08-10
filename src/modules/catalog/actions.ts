@@ -7,6 +7,7 @@ import { requireUser } from "@/modules/auth/session";
 import { generatePublicCode } from "./code";
 import type { BlockDraft } from "./types";
 import type { Prisma } from "@/generated/prisma/client";
+import { indexItem } from "@/modules/search/indexer";
 
 async function uniqueCode() {
   for (let i = 0; i < 5; i++) {
@@ -60,6 +61,7 @@ export async function saveItemAction(input: { id: string; title: string; descrip
     } }),
   ]);
   revalidatePath(`/catalog/${input.id}`); revalidatePath("/catalog");
+  await indexItem(input.id).catch(error => console.error("Semantic indexing failed", error));
   return { savedAt: new Date().toISOString() };
 }
 

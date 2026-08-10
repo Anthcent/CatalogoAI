@@ -2,9 +2,13 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 export type AiOrganization = { title: string; description: string; category: string; type: string; tags: string[] };
 
-export async function organizeContent(content: string): Promise<AiOrganization> {
+function client() {
   if (!process.env.GEMINI_API_KEY) throw new Error("Gemini is not configured.");
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+}
+
+export async function organizeContent(content: string): Promise<AiOrganization> {
+  const ai = client();
   const response = await ai.models.generateContent({
     model: process.env.GEMINI_MODEL ?? "gemini-2.5-flash",
     contents: `Organize this catalog knowledge:\n\n${content.slice(0, 20000)}`,
@@ -13,4 +17,14 @@ export async function organizeContent(content: string): Promise<AiOrganization> 
     } } },
   });
   return JSON.parse(response.text ?? "{}") as AiOrganization;
+}
+
+export async function embedTexts(contents: string[], taskType: "RETRIEVAL_DOCUMENT" | "RETRIEVAL_QUERY") {
+  if (!contents.length) return [];
+  const response = await client().models.embedContent({
+    model: process.env.GEMINI_EMBEDDING_MODEL ?? "gemini-embedding-001",
+    contents,
+    config: { outputDimensionality: 768, taskType },
+  });
+  return (response.embeddings ?? []).map(embedding => embedding.values ?? []);
 }

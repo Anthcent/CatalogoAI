@@ -206,7 +206,7 @@ model Embedding {
   sourceType String
   sourceId   String?
   textChunk  String
-  vector     Unsupported("vector")?
+  vector     Unsupported("vector(768)")?
   metadata   Json?
   item       CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
   @@index([itemId])
