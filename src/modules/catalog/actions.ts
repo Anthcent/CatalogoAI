@@ -147,3 +147,31 @@ export async function updatePropertiesAction(formData: FormData) {
   revalidatePath(`/catalog/${id}`); revalidatePath(`/catalog/${id}/properties`); revalidatePath("/catalog"); revalidatePath("/inbox");
   redirect(`/catalog/${id}`);
 }
+
+export async function addExternalLinkAction(formData: FormData) {
+  await requireUser();
+  const itemId = String(formData.get("itemId") ?? "");
+  const title = String(formData.get("title") ?? "").trim();
+  const url = String(formData.get("url") ?? "").trim();
+  try { new URL(url); } catch { throw new Error("Ingresa una URL válida."); }
+  await db.externalLink.create({ data: { itemId, title: title || new URL(url).hostname, url } });
+  revalidatePath(`/catalog/${itemId}/resources`);
+}
+
+export async function deleteExternalLinkAction(formData: FormData) {
+  await requireUser();
+  const itemId = String(formData.get("itemId") ?? "");
+  await db.externalLink.delete({ where: { id: String(formData.get("id") ?? "") } });
+  revalidatePath(`/catalog/${itemId}/resources`);
+}
+
+export async function deleteAssetAction(formData: FormData) {
+  await requireUser();
+  const itemId = String(formData.get("itemId") ?? "");
+  const asset = await db.asset.delete({ where: { id: String(formData.get("id") ?? "") } });
+  if (asset.storageType === "local") {
+    const { LocalStorageProvider } = await import("@/modules/storage/local");
+    await new LocalStorageProvider().delete(asset.path).catch(error => console.error("No se pudo eliminar el archivo físico", error));
+  }
+  revalidatePath(`/catalog/${itemId}/resources`);
+}
