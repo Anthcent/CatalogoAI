@@ -11,5 +11,9 @@ fi
 # the now PostgreSQL-compatible migration. Successful databases are unchanged.
 npx prisma migrate resolve --rolled-back 20260810000000_initial >/dev/null 2>&1 || true
 npx prisma migrate deploy
-npx tsx prisma/seed.ts
+if [ -n "${SEED_ADMIN_EMAIL:-}" ] && [ -n "${SEED_ADMIN_PASSWORD:-}" ]; then
+  npx tsx prisma/seed.ts
+else
+  echo "Administrator seed variables not set; first-run setup will be available."
+fi
 exec node server.js

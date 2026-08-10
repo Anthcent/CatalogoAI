@@ -14,7 +14,7 @@ Requirements: Node.js 22+, PostgreSQL 17 with `pgvector`, and npm.
 6. Run `npm run db:seed`.
 7. Run `npm run dev` and open `http://localhost:3000`.
 
-The administrator email and initial password come from `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD`. The password must contain at least 12 characters and is never printed by the seed command.
+On an empty database, open `/setup` to create the first administrator. The route locks permanently after creation. Optionally, automated environments can provide `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD`; the password must contain at least 12 characters and is never printed.
 
 ## Included
 
@@ -73,8 +73,7 @@ Deploy the repository root with PostgreSQL enabled. The image executes every pen
 Configure these values only in the authorized runtime manager:
 
 - `DATABASE_URL` (automatically injected when using managed PostgreSQL)
-- `SEED_ADMIN_EMAIL`
-- `SEED_ADMIN_PASSWORD`
+- `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` only when automated administrator provisioning is preferred
 - `GEMINI_API_KEY` when AI features are enabled
 - `GEMINI_MODEL` and `GEMINI_EMBEDDING_MODEL` when overriding defaults
 
