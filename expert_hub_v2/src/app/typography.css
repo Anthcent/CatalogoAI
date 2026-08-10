@@ -1,0 +1,39 @@
+:root {
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+}
+
+body {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+:where(button, input, textarea, select, label) {
+  font-size: max(var(--text-sm), 1em) !important;
+}
+
+:where(p, a, span, li, dt, dd, code, kbd) {
+  font-size: max(var(--text-xs), 1em) !important;
+}
+
+small {
+  font-size: max(var(--text-xs), 1em) !important;
+}
+
+h1 {
+  font-size: max(28px, 1em) !important;
+}
+
+h2 {
+  font-size: max(var(--text-lg), 1em) !important;
+}
+
+h3 {
+  font-size: max(var(--text-md), 1em) !important;
+}
+
+:where(p, li, textarea) {
+  line-height: 1.55;
+}

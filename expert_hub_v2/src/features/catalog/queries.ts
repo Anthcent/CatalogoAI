@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
 import {
   defaultBlocks,
+  blockTypes,
   type CanvasBlock,
   type BlockSpan,
 } from "@/features/canvas/types";
@@ -60,6 +61,7 @@ const include = {
   businesses: { include: { business: true } },
   type: true,
   status: true,
+  category: true,
   tags: { include: { tag: true } },
 } as const;
 
@@ -88,31 +90,26 @@ function toCanvasBlock(
   const span = ([4, 6, 8, 12] as BlockSpan[]).includes(raw.span as BlockSpan)
     ? (raw.span as BlockSpan)
     : 12;
-  const supported = [
-    "text",
-    "ai",
-    "callout",
-    "prompt",
-    "steps",
-    "gallery",
-    "diagram",
-    "relations",
-  ] as const;
-  const type = supported.find((value) => value === block.type) ?? "text";
+  const type = blockTypes.find((value) => value === block.type) ?? "text";
   const titles: Record<CanvasBlock["type"], string> = {
     text: index === 0 ? "Resumen" : "Contenido",
+    heading: "Título",
+    checklist: "Checklist",
+    table: "Tabla",
     ai: "Resumen generado por Gemini",
     callout: "Nota destacada",
     prompt: "Prompt",
     steps: "Proceso",
+    image: "Imagen",
     gallery: "Galería",
+    file: "Archivo",
+    link: "Enlace",
     diagram: "Diagrama",
     relations: "Relaciones",
   };
-  const content =
-    type === "text"
-      ? { ...raw, html: String(raw.html ?? raw.text ?? "") }
-      : raw;
+  const content = type === "text"
+    ? { ...raw, text: String(raw.text ?? raw.html ?? "").replace(/<[^>]+>/g, " ") }
+    : raw;
   return {
     id: block.id,
     type,
@@ -131,11 +128,21 @@ export async function getCanvasItem(idOrCode: string, userId: string) {
     where: isUuid
       ? { id: idOrCode, createdById: userId }
       : { publicCode: idOrCode, createdById: userId },
-    include: { ...include, blocks: { orderBy: { position: "asc" } } },
+    include: {
+      ...include,
+      blocks: { orderBy: { position: "asc" } },
+      versions: { orderBy: { version: "desc" }, take: 1 },
+    },
   });
   if (!item) return null;
   return {
     item: toCatalogItem(item),
+    metadata: {
+      category: item.category?.name ?? null,
+      createdAt: item.createdAt.toISOString(),
+      updatedAt: item.updatedAt.toISOString(),
+      version: item.versions[0]?.version ?? 0,
+    },
     blocks: item.blocks.length
       ? item.blocks.map(toCanvasBlock)
       : defaultBlocks.map((block) => ({ ...block, id: randomUUID() })),

@@ -12,5 +12,11 @@ export default async function ItemPage({
   const user = await requireUser();
   const result = await getCanvasItem(id, user.id);
   if (!result) notFound();
-  return <CanvasView item={result.item} initialBlocks={result.blocks} />;
+  return (
+    <CanvasView
+      item={result.item}
+      initialBlocks={result.blocks}
+      metadata={result.metadata}
+    />
+  );
 }
