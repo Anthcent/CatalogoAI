@@ -24,7 +24,7 @@ The administrator email and initial password come from `SEED_ADMIN_EMAIL` and `S
 | Catalog | Stable public codes, businesses, types, categories, statuses, tags and filters |
 | Canvas | Modular blocks, reordering, duplication, deletion and debounced autosave |
 | Recovery | Immutable snapshots, visual history and non-destructive restore |
-| Search | Exact code, title, description and tag ranking with query history |
+| Search | Exact, text and Gemini semantic ranking with query history and PostgreSQL JSON embedding storage |
 | Capture | Minimal quick capture and inbox organization flow |
 | Templates | Seeded structures and custom builder, copied into independent items |
 | Relations | Typed outgoing relations and reverse references between items |
